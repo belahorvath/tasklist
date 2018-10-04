@@ -59,7 +59,10 @@ fieldset{
 #issuesFieldset, #projectFieldset{
     
     border: 2px solid black;
-    padding: 10px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 1em;
+    padding-bottom: 1em;
    
 }
 
@@ -117,6 +120,15 @@ legend{
 #li-rigthbound{
     text-align: right;
     float: right;
+}
+#btnProject
+{
+    margin-left: 10%;
+    width: 20%;
+}
+#txtProject
+{
+    width: 50%;
 }
 
 i {

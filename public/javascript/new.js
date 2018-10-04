@@ -1,4 +1,5 @@
-function changeList()
-{
-    
+function date(){
+
+    $("#datepicker").datepicker();
+
 }

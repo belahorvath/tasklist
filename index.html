@@ -13,8 +13,18 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="public/javascript/new.js"></script>
-    <link rel="stylesheet" href="/public/css/style.css">
+    <script src="./public/javascript/new.js"></script>
+    
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./public/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 </head>
     
 <header>
@@ -60,17 +70,34 @@
     <fieldset id="priorityFieldset">
     <div class="row" id="priorityDiv">
       <div class="col-sm-12">
-        First level
         <div class="row">
-          <div class="col-8 col-sm-6">
-            Level 2
+          <div class="col-6 col-sm-6">
+              
+             
+          
+            
+                 <span>Date: <input type="text" id="datepicker" onclick="date()"></span>
+ <div class="btn-group dropright">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropright
+  </button>
+  <div class="dropdown-menu">
+    <!-- Dropdown menu links -->
+  </div>
+</div>
+                      </div>
+
+
+        
+                <div class="col-4 col-sm-6">
+            <input id="txtProject" name="txtProject" type="text" placeholder="new issue...">
+            <button id="btnProject" class="btn-primary">Create Issue</button>
           </div>
-          <div class="col-4 col-sm-6">
-            Level 2
-          </div>
-        </div>
-      </div>
+    
     </div>   
+          </div>
+    
+          </div>
     </fieldset>
     </form>
         

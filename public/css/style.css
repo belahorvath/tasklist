@@ -59,7 +59,10 @@ fieldset{
 #issuesFieldset, #projectFieldset{
     
     border: 2px solid black;
-    padding: 10px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 1em;
+    padding-bottom: 1em;
    
 }
 
@@ -106,6 +109,16 @@ legend{
     overflow:scroll;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
+}
+
+#btnProject
+{
+    margin-left: 10%;
+    width: 20%;
+}
+#txtProject
+{
+    width: 50%;
 }
 
 

@@ -108,4 +108,17 @@ legend{
     -webkit-overflow-scrolling: touch;
 }
 
+.list-group li{
+    height: 35px;
+    font-size: 12px;
+    padding: 8px;
+}
 
+#li-rigthbound{
+    text-align: right;
+    float: right;
+}
+
+i {
+    padding-left: 20px;
+}

@@ -3,9 +3,10 @@ const express = require('express'),
       bodyParser = require('body-parser'),
       morgan = require('morgan'),
       app = express();
+        var path = require('path')
 
 app.use(morgan('dev'));
-app.use(express.static('../index.html'));
+app.use(express.static('../../index.html'));
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -23,8 +24,8 @@ app.post('/todos', function(req, res) {
     }});
 });
 
-app.get('/todos', function(req, res) {
-  res.status(200).json({'todos': todos});
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname + '/../../index.html'));
 });
 
 app.listen(8080, function(){

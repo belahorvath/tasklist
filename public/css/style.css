@@ -154,6 +154,10 @@ i {
   .header-right {
     float: none;
   }
+    body{
+        min-width: 300px;
+    }
+    
     
     
 }

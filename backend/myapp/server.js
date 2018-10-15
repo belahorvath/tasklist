@@ -7,26 +7,17 @@ const express = require('express'),
 
 app.use(express.static(__dirname + '/../../public'));
 app.use(express.static('../../index.html'));
+
+app.use(express.static(path.join(__dirname,'../../index.html')));
+app.use('/public', express.static(path.join(__dirname,'/../../public')));
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
-var todos = [];
-
-app.post('/todos', function(req, res) {
-  todos.push(req.body.todo);
-
-  res.format({
-    'application/json': function() {
-      res.status(200).json({'todo': req.body.todo});
-    },
-    'text/html': function() {
-      res.redirect(301, '/');
-    }});
-});
-
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname + '/../../index.html'));
+  res.sendFile(path.join(__dirname, '/../../index.html'));
 });
+
 app.get('/public/css/style.css', function (req, res) {
   res.sendFile(path.join(__dirname + '/../../public/css/style.css'));
 });

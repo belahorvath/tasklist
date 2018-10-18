@@ -1,5 +1,5 @@
 function date(){
-    
+
     $('#datepicker').datepicker({
       inline: true,
       showOtherMonths: true,

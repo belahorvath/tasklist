@@ -5,6 +5,20 @@ const express = require('express'),
         var path = require('path')
 
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
+var projects = [];
+
+app.post('/projects', function(req, res) {
+  projects.push(req.body.project);
+  res.status(201).json({'project': req.body.project});
+});
+
+
+app.get('/projects', function(req, res) {
+  res.status(200).json({'project': projects});
+});
 
 app.listen(8080, function(){
   console.log("ready captain.");

@@ -1,0 +1,13 @@
+<projectList>
+        <ul class="list-group">
+            <project each="{ allTodos() }"> </project>
+        </ul>
+
+    <script>
+     this.projects = new projectCollection(this);
+      // return all todos
+      this.allProjects = function() {
+         return this.projects.all();
+      }
+    </script>
+</projectList>

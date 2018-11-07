@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="./css/style.css" type="text/css">
   <link rel="stylesheet" href="./css/datepicker.css" type="text/css">
   <script src="./javascript/datepicker.js"></script>
-
+  <script src="./javascript/riot+compiler.js"></script>
 </head>
 
 <header>
@@ -38,24 +38,24 @@
 
 <body>
   <div class="container">
-    <form>
+    <form action="/projects" method="post">
       <fieldset id="projectFieldset">
         <legend>Projects: </legend>
         <div class="row" id="projectsDiv">
           <div class="col-sm-12">
             <div class="row">
               <div class="col-6 col-sm-4">
-                <ul class="list-group">
-                  <li class="list-group-item active" onclick="changeList">Cras justo odio</li>
-                  <li class="list-group-item">Dapibus ac facilisis in</li>
-                  <li class="list-group-item">Morbi leo risus</li>
-                  <li class="list-group-item">Porta ac consectetur ac</li>
-                  <li class="list-group-item">Vestibulum at eros</li>
-                </ul>
+
+                  <projectList></projectList>
+
+                  <script src="./javascript/projectCollection.js"></script>
+                  <script type="riot/tag" src="./components/projectList.tag.html"></script>
+                  <script type="riot/tag" src="./components/project.tag.html"></script>
+                  <script>riot.mount('projectList, project');</script>
 
               </div>
               <div class="col-6 col-sm-8">
-                <input id="txtProject" name="txtProject" type="text" placeholder="new Project...">
+                <input type="text" id="txtProject" ref="projectName" name="project" placeholder="new Project...">
                 <button id="btnProject" class="btn-primary">Create Project</button>
               </div>
             </div>
@@ -105,29 +105,19 @@
       <div class="row" id="issuesDiv">
         <div class="col-sm-12">
           <div class="panel panel-primary" id="result_panel">
-
             <div class="panel-body">
               <ul class="list-group">
-                <li class="list-group-item">
-                  <input name="radioIssue1" type="radio" value="" class="radio_prod" /> <strong> Read documentation</strong>
-                  <div id="li-rigthbound"><strong>2016-03-21</strong><i id="ico" class="fa fa-trash-o"></i></div>
-                </li>
-                <li class="list-group-item">
-                  <input name="radioIssue1" type="radio" value="" class="radio_prod" /> <strong> Do the exercises in RiotJS Guide</strong>
-                  <div id="li-rigthbound"><strong>2016-03-21</strong><i class="fa fa-trash-o"></i></div>
-                </li>
-                <li class="list-group-item">
-                  <input name="radioIssue1" type="radio" value="" class="radio_prod" /> <strong> Test reactive data-flow in RiotJS</strong>
-                  <div id="li-rigthbound"><strong>2016-03-21</strong><i class="fa fa-trash-o"></i></div>
-                </li>
-                <li class="list-group-item">
-                  <input name="radioIssue1" type="radio" value="" class="radio_prod" /> <strong> Enlist in Web Engineering</strong>
-                  <div id="li-rigthbound"><strong>2016-03-21</strong><i class="fa fa-trash-o"></i></div>
-                </li>
+
+
 
               </ul>
             </div>
           </div>
+<!-- bsp -->
+<li class="list-group-item">
+<input name="radioIssue1" type="radio" value="" class="radio_prod" /> <strong> Read documentation</strong>
+<div id="li-rigthbound"><strong>2016-03-21</strong><i id="ico" class="fa fa-trash-o"></i></div>
+</li>
 
         </div>
       </div>

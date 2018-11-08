@@ -1,21 +1,28 @@
-<projectForm>
+<projectForm onsubmit="{ refresh }">
 <form id="projectForm">
-    <input type="text"  ref="projectName" name="project" placeholder="new Project..."> 
+    <input type="text"  ref="projectName" name="project" placeholder="new Project...">
   <button id="btnProject" class="btn-primary" onclick="{ createProject }">Create Project</button>
-    
+
 </form>
     <script>
-    this.projects = opts.projects;
+      this.projects = new ProjectCollection(this);
 
-    this.createProject = function(e) {
+      createProject(e) {
+      e.preventDefault();
 
-    e.preventDefault();
-    if(this.refs.projectName.value) {
-    this.projects.add({"projectName" : this.refs.projectName.value});
-    this.refs.projectName.value="";
-    }
-    
-    }
-    
+      this.projects.fetch();
+      console.log(this.projects);
+
+        if(this.refs.projectName.value) {
+        this.projects.add({"projectName" : this.refs.projectName.value});
+        this.refs.projectName.value="";
+        }
+
+      }
+
+      refresh(e){
+        console.log("test");
+      }
+
 </script>
 </projectForm>

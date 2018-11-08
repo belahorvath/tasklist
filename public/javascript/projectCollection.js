@@ -17,6 +17,7 @@ class ProjectCollection {
 
     add(model) {
         this.collection.push(model);
+        this.save();
         this.riotjs_tag.update();
     }
 

@@ -1,7 +1,7 @@
 <projectButton>
-  <input type="text" id="txtProject" ref="projectName" name="project" placeholder="new Project...">
-  <button id="btnProject" class="btn-primary" onclick="{ createProject }">Create Project</button>
-  <script src="../javascript/projectCollection.js">
+
+    <script>
+        /**
 
   var project;
     console.log("outside");
@@ -13,18 +13,12 @@ this.createProject = function(e) {
     }
 
     //Create local collection
-    var collection = new ProjectCollection();
+    var col = collection = new ProjectCollection(this);
     //Get values out of LocalStorage
-    var projectList = collection.fetch();
 
-    var size = projectList.all().length();
-    for(var i = 0; i<size; i++){
-      if(projectList[i] == project){
-        console.log("error item is already in list");
-      }
-    }
 
-    projectList.add(project);
+    col.add(project);
   }
+**/
   </script>
 </projectButton>

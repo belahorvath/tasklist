@@ -1,0 +1,21 @@
+<projectForm>
+<form id="projectForm">
+    <input type="text"  ref="projectName" name="project" placeholder="new Project..."> 
+  <button id="btnProject" class="btn-primary" onclick="{ createProject }">Create Project</button>
+    
+</form>
+    <script>
+    this.projects = opts.projects;
+
+    this.createProject = function(e) {
+
+    e.preventDefault();
+    if(this.refs.projectName.value) {
+    this.projects.add({"projectName" : this.refs.projectName.value});
+    this.refs.projectName.value="";
+    }
+    
+    }
+    
+</script>
+</projectForm>

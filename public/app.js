@@ -1,5 +1,6 @@
 $(document).ready(function() {
   $.get("/projects", function(res) {
+      console.log("ddd");
     $.each(res.projects, function(index, project) {
       $("#projects").append($("<li>").text(project));
     });

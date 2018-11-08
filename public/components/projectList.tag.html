@@ -1,9 +1,9 @@
 <projectList>
         <ul class="list-group">
-            <project each="{ allTodos() }"> </project>
+            <project each="{ allProjects }"> </project>
         </ul>
 
-    <script>
+    <script src="../javascript/projectCollection.js">
      this.projects = new projectCollection(this);
       // return all todos
       this.allProjects = function() {

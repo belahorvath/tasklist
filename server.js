@@ -12,13 +12,16 @@ var projects = [];
 
 app.post('/projects', function(req, res) {
   projects.push(req.body.project);
-  res.status(201).json({'project': req.body.project});
+res.status(201).json({'project': projects});
+    
+  
+   
 });
 
 
 app.get('/projects', function(req, res) {
   res.status(200).json({'project': projects});
-});
+}); 
 
 app.listen(8080, function(){
   console.log("ready captain.");

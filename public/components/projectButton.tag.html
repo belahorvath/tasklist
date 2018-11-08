@@ -1,0 +1,30 @@
+<projectButton>
+  <input type="text" id="txtProject" ref="projectName" name="project" placeholder="new Project...">
+  <button id="btnProject" class="btn-primary" onclick="{ createProject }">Create Project</button>
+  <script src="../javascript/projectCollection.js">
+
+  var project;
+    console.log("outside");
+this.createProject = function(e) {
+          console.log("got inside");
+    if(this.refs.projectName.value){
+      project = ({"name" : this.refs.projectName.value});
+      this.refs.projectName.value = '';
+    }
+
+    //Create local collection
+    var collection = new ProjectCollection();
+    //Get values out of LocalStorage
+    var projectList = collection.fetch();
+
+    var size = projectList.all().length();
+    for(var i = 0; i<size; i++){
+      if(projectList[i] == project){
+        console.log("error item is already in list");
+      }
+    }
+
+    projectList.add(project);
+  }
+  </script>
+</projectButton>

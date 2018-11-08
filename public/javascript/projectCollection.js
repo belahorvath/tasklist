@@ -1,10 +1,14 @@
 class ProjectCollection {
 
     constructor(tag) {
-        this.collection = [{name: "foo"}, { name: "bar" }];
+        this.collection = [];
         if(tag) {
             this.riotjs_tag = tag;
         }
+    }
+
+    save(){
+      localStorage.setItem("projectList", JSON.stringify(this.collection));
     }
 
     all() {
@@ -14,5 +18,9 @@ class ProjectCollection {
     add(model) {
         this.collection.push(model);
         this.riotjs_tag.update();
+    }
+
+    fetch(){
+      this.collection = JSON.parse(localStorage.getItem("projectList")) || [];
     }
 }

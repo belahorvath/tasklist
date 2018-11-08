@@ -38,7 +38,8 @@
 
 <body>
   <div class="container">
-    <form action="/projects" method="post">
+    <form id="projecForm">
+      <INPUT TYPE="hidden" NAME="redirect" VALUE="localhost:8080/">
       <fieldset id="projectFieldset">
         <legend>Projects: </legend>
         <div class="row" id="projectsDiv">
@@ -51,18 +52,21 @@
                   <script src="./javascript/projectCollection.js"></script>
                   <script type="riot/tag" src="./components/projectList.tag.html"></script>
                   <script type="riot/tag" src="./components/project.tag.html"></script>
-                  <script>riot.mount('projectList, project');</script>
+                    <script type="riot/tag" src="./components/projectButton.tag.html"></script>
+                  <script>riot.mount('projectList, project, projectButton');</script>
 
               </div>
               <div class="col-6 col-sm-8">
-                <input type="text" id="txtProject" ref="projectName" name="project" placeholder="new Project...">
-                <button id="btnProject" class="btn-primary">Create Project</button>
+                <projectButton></projectButton>
+
               </div>
             </div>
           </div>
         </div>
       </fieldset>
     </form>
+
+
 
     <form>
       <fieldset id="priorityFieldset">

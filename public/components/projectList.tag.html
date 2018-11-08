@@ -1,13 +1,31 @@
 <projectList>
+  <div class="container">
         <ul class="list-group">
             <project each="{ allProjects }"> </project>
         </ul>
+  </div>
 
-    <script src="../javascript/projectCollection.js">
-     this.projects = new projectCollection(this);
-      // return all todos
-      this.allProjects = function() {
-         return this.projects.all();
+    <script>
+      var status = false;
+
+      //Abfrage aus localstorage
+
+      if(!status){
+        var projects = new ProjectCollection(this);
+         // return all todos
+
+         //Store list
+        projects.save();
+
+      }else{
+        Console.log("List already exists");
       }
+
+
+      //Returns all projects
+      var allProjects = function() {
+         return projects.all();
+      }
+
     </script>
 </projectList>

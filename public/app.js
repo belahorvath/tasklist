@@ -1,3 +1,4 @@
+/**
 $(document).ready(function() {
   $.get("/projects", function(res) {
       console.log("ddd");
@@ -14,3 +15,4 @@ $(document).ready(function() {
     event.preventDefault();
   });
 });
+**/

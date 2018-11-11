@@ -5,14 +5,12 @@
 
 </form>
     <script>
-        console.log("projectForm");
 
         this.projects = opts.projects;
 
       createProject(e) {
       e.preventDefault();
 
-      this.projects.fetch();
 
         if(this.refs.projectName.value) {
         this.projects.add({"projectName" : this.refs.projectName.value});

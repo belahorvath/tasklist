@@ -19,9 +19,10 @@
         </div>
     </div>
     <script>
-        console.log("projectList");
             this.projects = new ProjectCollection(this);
-            this.projects.save();
+        this.projects.fetch();
+
+        this.projects.save();
             this.allProjects = function() {
                 return this.projects.all();
             }

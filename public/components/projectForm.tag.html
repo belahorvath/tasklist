@@ -5,23 +5,17 @@
 
 </form>
     <script>
-      this.projects = new ProjectCollection(this);
+      this.projects = opts.projects;
 
       createProject(e) {
       e.preventDefault();
 
       this.projects.fetch();
-      console.log(this.projects);
 
         if(this.refs.projectName.value) {
         this.projects.add({"projectName" : this.refs.projectName.value});
         this.refs.projectName.value="";
         }
-
-      }
-
-      refresh(e){
-        console.log("test");
       }
 
 </script>

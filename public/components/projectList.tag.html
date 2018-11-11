@@ -1,17 +1,23 @@
 <projectList>
 
-  <div class="row" id="projectsDiv">
+    <div class="row" id="projectsDiv">
+        <div class="col-sm-12">
+            <div class="row">
 
-        <ul class="list-group">
+            <div class="col-6 col-sm-4">
+                <ul class="list-group">
+                    <project each="{ allProjects() }"> </project>
+                 </ul>
+            </div>
 
 
-        </ul>
-      <project id="data" each="{ allProjects }"> </project>
-
-      <projectForm projects= "{ this.projects }"></projectForm>
-      <project each="{ allProjects() }"> </project>
+                <div class="col-6 col-sm-8">
+                    <projectForm projects= "{ this.projects }"></projectForm>
+                </div>
 
   </div>
+        </div>
+    </div>
     <script>
         console.log("projectList");
             this.projects = new ProjectCollection(this);

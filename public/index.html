@@ -44,83 +44,35 @@
         <legend>Projects: </legend>
 
               <div >
-            <!-- liste eig. --->
+                <!--Project list after they get created-->
 
                   <projectList></projectList>
 
-                  <script type="riot/tag" src="./components/projectList.tag.html"></script>
-                    <script type="riot/tag" src="./components/projectForm.tag.html"></script>
-                  <script type="riot/tag" src="./components/project.tag.html"></script>
-
-                <script>riot.mount('*');</script>
-
               </div>
-
-
       </fieldset>
 
 
+<!--Issue creator-->
+
+<createIssue></createIssue>
 
 
-    <form>
-      <fieldset id="priorityFieldset">
-        <div class="row" id="priorityDiv">
-          <div class="col-sm-12">
-            <div class="row">
-              <div class="col-6 col-sm-6">
-
-
-
-                <input type="text" id="datepicker" placeholder="Pick date..." onclick="date()">
-                <div class="btn-group dropright">
-                  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropright
-                  </button>
-                  <div class="dropdown-menu">
-                    <button class="dropdown-item" type="button">Action</button>
-                    <button class="dropdown-item" type="button">Another action</button>
-                  </div>
-                </div>
-              </div>
-
-
-
-
-              <div class="col-4 col-sm-6">
-                <input id="txtProject" name="txtProject" type="text" placeholder="new issue...">
-                <button id="btnProject" class="btn-primary">Create Issue</button>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-      </fieldset>
-    </form>
-
+<!--Issue list after they get created-->
     <fieldset id="issuesFieldset">
       <legend>Issues: </legend>
-      <div class="row" id="issuesDiv">
-        <div class="col-sm-12">
-          <div class="panel panel-primary" id="result_panel">
-            <div class="panel-body">
-              <ul class="list-group">
 
+          <issueList></issueList>
 
+          <script type="riot/tag" src="./components/projectList.tag.html"></script>
+          <script type="riot/tag" src="./components/projectForm.tag.html"></script>
+          <script type="riot/tag" src="./components/project.tag.html"></script>
+          <script type="riot/tag" src="./components/issueList.tag.html"></script>
+          <script type="riot/tag" src="./components/createIssue.tag.html"></script>
+          <script type="riot/tag" src="./components/issue.tag.html"></script>
 
-              </ul>
-            </div>
-          </div>
-<!-- bsp -->
-                <li class="list-group-item">
-                    <input name="radioIssue1" type="radio" value="" class="radio_prod" /> <strong> Read documentation</strong>
-                    <div id="li-rigthbound"><strong>2016-03-21</strong><i id="ico" class="fa fa-trash-o"></i></div>
-                </li>
+          <script>riot.mount('*');</script>
 
-        </div>
-      </div>
     </fieldset>
-
   </div>
 
   <footer class="footer">

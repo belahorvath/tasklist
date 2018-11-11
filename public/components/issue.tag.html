@@ -1,0 +1,29 @@
+<issue>
+  <li class="list-group-item">
+      <span>
+        <strong>{ opts.issue.description }</strong>
+      </span>
+      <div id="li-rigthbound">
+        <input type="checkbox" name="done" ref="done" checked="{ opts.issue.done }" onclick="{ update_done }">
+        <div class="col-sm-1 mb-2">
+          <img class="float-right" src="images/trashbin.png" onclick="{ delete_issue }">
+        </div>
+      </div>
+
+  </li>
+
+<script>
+
+//TODO
+
+delete_issue(e){
+  console.log("deleted");
+}
+
+update_done(e){
+  done = this.refs.done.checked;
+}
+
+</script>
+
+</issue>

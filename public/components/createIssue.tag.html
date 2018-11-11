@@ -1,0 +1,49 @@
+<createIssue>
+
+  <form onsubmit={ submit }>
+    <div class="row">
+      <div class="col-md-2 mb-2">
+        <select ref="issue_prio" class="form-control">
+          <option value="">Priority</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+      <div class="col-md-3 mb-2">
+        <input ref="issue_date" type="text" id="datepicker" placeholder="Pick date..." onclick="date()">
+      </div>
+      <div class="col-md-4 mb-2">
+        <input ref="issue_name" class="form-control" type="text" name="create_issue" placeholder="new issue...">
+      </div>
+      <div class="col-md-3 mb-2">
+        <button type="submit" class="btn btn-primary">Create Issue</button>
+      </div>
+    </div>
+  </form>
+
+<script>
+
+var component = this;
+
+submit(e) {
+	e.preventDefault();
+	var input = component.refs.issue_name;
+	var issue_name = input.value;
+	input.value = "";
+	input = component.refs.issue_date;
+	var issue_date = input.value;
+	input.value = "";
+	input = component.refs.issue_prio;
+	var issue_prio = input.value;
+	input.value = "";
+	issue = {
+		'description': issue_name,
+		'priority': issue_prio,
+		'duedate': issue_date,
+		'done': false,
+	};
+  //TODO - Create the issue and place in localStorage
+}
+</script>
+</createIssue>

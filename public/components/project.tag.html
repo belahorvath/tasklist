@@ -1,8 +1,31 @@
 <project>
-    <li class="list-group-item">
-        <span>
-            { projectName }
-        </span>
-    </li>
+    <input   onclick="{ issue }" value="{ projectName }" ref="{ projectName }" id="projectInput" type="text" readonly>
+
+
+
+    <script>
+        this.issues = new issueCollection(this);
+        this.issues.fetch();
+
+        this.issue = function () {
+
+
+
+
+
+
+
+
+        }
+
+        this.issues.save();
+        this.allProjects = function() {
+            return this.issues.all();
+        }
+
+    </script>
+
+
     
 </project>
+

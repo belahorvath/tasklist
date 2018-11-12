@@ -101,6 +101,14 @@ legend {
   height: 35px;
   font-size: 12px;
   padding: 8px;
+
+
+}
+
+#projectInput:focus{
+  background-color: dodgerblue;
+  color: white;
+
 }
 
 #li-rigthbound {

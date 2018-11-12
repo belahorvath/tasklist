@@ -1,11 +1,11 @@
 <projectForm>
 <form id="projectForm">
     <input type="text"  ref="projectName" name="project" placeholder="new Project...">
-  <button id="btnProject" class="btn-primary" onclick="{ createProject }">Create Project</button>
+  <button id="btnProject" class="btn btn-primary" onclick="{ createProject }">Create Project</button>
 
 </form>
     <script>
-
+        console.log("ProjectForm");
         this.projects = opts.projects;
 
       createProject(e) {

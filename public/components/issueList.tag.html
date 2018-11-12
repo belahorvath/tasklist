@@ -1,26 +1,38 @@
 <issueList>
+<div class="container">
+
+<createIssue issues ="{ this.issues }"></createIssue>
+
+<fieldset id="issuesFieldset">
+<legend>Issues: </legend>
   <div class="row" id="issuesDiv">
     <div class="col-sm-12">
       <div class="panel panel-primary" id="result_panel">
         <div class="panel-body">
           <!--<ul class="list-group">-->
 
-              <ul each="{ issue in issues }">
-            	<issue issue="{issue}"></issue>
+              <ul>
+            	<issue each="{ allIssues() }"></issue>
 
           </ul>
         </div>
       </div>
     </div>
   </div>
+</fieldset>
+</div>
 
-  <script>
-  		var component = this;
-  		var issues = opts.issues;
-  		// save issues on update (delete, check, add)
-  		component.on('update', function() {
-  			localStorage.setItem("issues", JSON.stringify(issues));
-  		});
-  	</script>
+<script>
+    console.log("IssueList");
+
+    this.issues = new issueCollection(this);
+    this.issues.fetch();
+
+    this.issues.save();
+        this.allIssues = function() {
+            return this.issues.all();
+        }
+
+</script>
 
 </issueList>

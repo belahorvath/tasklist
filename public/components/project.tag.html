@@ -2,30 +2,27 @@
     <input   onclick="{ issue }" value="{ projectName }" ref="{ projectName }" id="projectInput" type="text" readonly>
 
 
-
     <script>
-        this.issues = new issueCollection(this);
-        this.issues.fetch();
-
-        this.issue = function () {
+        //this.issues = new issueCollection(this);
+        //this.issues.fetch();
 
 
-
-
-
+        issue(e){
+          e.preventDefault();
+          //var project = this.projects.collection[this.refs.index.value];
+          console.log("test");
+        //project.collection.containedIssues;
 
 
 
         }
 
+/*
         this.issues.save();
         this.allProjects = function() {
             return this.issues.all();
         }
-
+*/
     </script>
 
-
-    
 </project>
-

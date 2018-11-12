@@ -1,13 +1,11 @@
 <issue>
   <li class="list-group-item">
       <span>
-        <strong>{ opts.issue.description }</strong>
+        <strong>{ description }</strong>
       </span>
       <div id="li-rigthbound">
-        <input type="checkbox" name="done" ref="done" checked="{ opts.issue.done }" onclick="{ update_done }">
-        <div class="col-sm-1 mb-2">
-          <img class="float-right" src="images/trashbin.png" onclick="{ delete_issue }">
-        </div>
+        <input type="checkbox" name="done" ref="done" checked="{ done }" onclick="{ update_done }">
+        <img style="padding-left: 5px;" class="float-right" src="images/trash.png" onclick="{ delete_issue }">
       </div>
 
   </li>

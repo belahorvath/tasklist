@@ -60,7 +60,7 @@ fieldset {
 }
 
 #projectFieldset {
-    
+
   margin-top: 10em;
 }
 
@@ -123,7 +123,7 @@ legend {
 
 }
 #datepicker{
-    
+
     margin-left: 10px;
     min-width: 80px;
  width: 50%;
@@ -151,7 +151,7 @@ i {
     float: none;
     display: block;
     text-align: left;
-  
+
 
   }
     #projectFieldset {
@@ -172,7 +172,7 @@ i {
     body{
         min-width: 300px;
     }
-    
-    
-    
+
+
+
 }

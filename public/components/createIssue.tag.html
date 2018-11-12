@@ -23,14 +23,15 @@
   </form>
 
 <script>
+this.issues = opts.issues;
 
-var component = this;
+console.log(this.issues);
 
 submit(e) {
 	e.preventDefault();
-	var issue_name = component.refs.issue_name.value;
-	var issue_date = component.refs.issue_date.value;
-	var issue_prio = component.refs.issue_prio.value;
+	var issue_name = this.refs.issue_name.value;
+	var issue_date = this.refs.issue_date.value;
+	var issue_prio = this.refs.issue_prio.value;
 
 	issue = {
 		'description': issue_name,
@@ -38,8 +39,9 @@ submit(e) {
 		'duedate': issue_date,
 		'done': false,
 	};
-  console.log(issue);
-  //TODO - Create the issue and place in localStorage
+
+  this.issues.add(issue);
+
 }
 </script>
 </createIssue>

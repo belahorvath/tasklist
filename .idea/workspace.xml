@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38fdd49b-2089-4f11-b369-43876eb55db5" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/components/createIssue.tag.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/components/createIssue.tag.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/components/issue.tag.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/components/issue.tag.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/components/issueList.tag.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/components/issueList.tag.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/components/project.tag.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/components/project.tag.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/components/projectList.tag.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/components/projectList.tag.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/javascript/issueCollection.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/javascript/issueCollection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/javascript/projectCollection.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/javascript/projectCollection.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,7 +18,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
+            <state relative-caret-position="478">
               <caret line="54" selection-start-line="54" selection-end-line="54" />
             </state>
           </provider>
@@ -33,17 +27,17 @@
       <file leaf-file-name="issueList.tag.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/components/issueList.tag.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
+            <state relative-caret-position="67">
               <caret line="14" column="45" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="issue.tag.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="issue.tag.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/components/issue.tag.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="30" lean-forward="true" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+            <state relative-caret-position="357">
+              <caret line="21" selection-start-line="21" selection-end-line="26" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -89,11 +83,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="createIssue.tag.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="createIssue.tag.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/components/createIssue.tag.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="747">
-              <caret line="53" selection-start-line="53" selection-end-line="53" />
+            <state relative-caret-position="578">
+              <caret line="46" column="22" lean-forward="true" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -131,11 +125,11 @@
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/public/javascript/projectCollection.js" />
         <option value="$PROJECT_DIR$/public/components/projectList.tag.html" />
-        <option value="$PROJECT_DIR$/public/components/createIssue.tag.html" />
         <option value="$PROJECT_DIR$/public/components/project.tag.html" />
         <option value="$PROJECT_DIR$/public/javascript/issueCollection.js" />
         <option value="$PROJECT_DIR$/public/components/issueList.tag.html" />
         <option value="$PROJECT_DIR$/public/components/issue.tag.html" />
+        <option value="$PROJECT_DIR$/public/components/createIssue.tag.html" />
       </list>
     </option>
   </component>
@@ -342,10 +336,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18969000" />
+    <option name="totallyTimeSpent" value="20289000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-13" y="0" width="1940" height="1100" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -361,7 +355,7 @@
       <window_info anchor="bottom" id="Terminal" order="14" weight="0.3286119" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.56962025" visible="true" weight="0.22135417" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.56962025" visible="true" weight="0.22089396" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info id="Structure" order="1" sideWeight="0.43037975" side_tool="true" weight="0.22147651" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -735,13 +729,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/components/createIssue.tag.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="747">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/components/projectForm.tag.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -766,13 +753,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascript/projectCollection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/javascript/issueCollection.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -780,24 +760,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascript/projectCollection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/components/issue.tag.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" selection-start-line="21" selection-end-line="26" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
+        <state relative-caret-position="478">
           <caret line="54" selection-start-line="54" selection-end-line="54" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/components/issueList.tag.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
+        <state relative-caret-position="67">
           <caret line="14" column="45" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/components/issue.tag.html">
+    <entry file="file://$PROJECT_DIR$/public/components/createIssue.tag.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="30" lean-forward="true" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+        <state relative-caret-position="578">
+          <caret line="46" column="22" lean-forward="true" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
         </state>
       </provider>
     </entry>

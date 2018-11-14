@@ -33,7 +33,6 @@ submit(e) {
     {
 
 
-
 	e.preventDefault();
 	var issue_name = this.refs.issue_name.value;
 	var issue_date = this.refs.issue_date.value;
@@ -49,9 +48,16 @@ submit(e) {
 
 	};
 
-  this.issues.add(issue);
-    } else{
-    }
+        for(var i = 0; i<this.issues.collection.length;i++)
+        {
+            if(issue_name == this.issues.collection[i].description && localStorage.getItem("index") == this.issues.collection[i].index )
+            {
+                alert("Fehler");
+            }
+            else{
+            this.issues.add(issue);
+            }
+        }}
 
 
 

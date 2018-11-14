@@ -17,23 +17,31 @@
     this.issues = opts.issues;
 
 
-console.log(this.issues);
 delete_issue(e){
-    console.log(this.issues.length);
 
-    for(var i = 0; i<this.issues.length;i++)
-{   console.log(this.issues[i].description);
-    if(this.description == this.issues[i].description && this.index == this.issues[i].index )
+    for(var i = 0; i<this.issues.collection.length;i++)
     {
-        console.log("delete");
-        this.issues.splice(i,1);
+        if(this.description == this.issues.collection[i].description && this.index == this.issues.collection[i].index )
+    {
+        this.issues.collection.splice(i,1);
     }
 }
-this.issues.update();
+    this.issues.save();
+    this.issues.update();
+
 }
 
 update_done(e){
-  done = this.refs.done.checked;
+    for(var i = 0; i<this.issues.collection.length;i++)
+    {
+        if(this.description == this.issues.collection[i].description && this.index == this.issues.collection[i].index )
+        {
+            this.issues.collection[i].done = true;
+        }
+    }
+    this.issues.save();
+    this.issues.update();
+
 }
 
 </script>

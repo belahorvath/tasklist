@@ -40,7 +40,7 @@ submit(e) {
 
 	issue = {
 
-        'index':localStorage.getItem("index"),
+    'index':localStorage.getItem("index"),
 		'description': issue_name,
 		'priority': issue_prio,
 		'duedate': issue_date,
@@ -48,19 +48,31 @@ submit(e) {
 
 	};
 
-        for(var i = 0; i<this.issues.collection.length;i++)
-        {
-            if(issue_name == this.issues.collection[i].description && localStorage.getItem("index") == this.issues.collection[i].index )
-            {
-                alert("Fehler");
-            }
-            else{
-            this.issues.add(issue);
-            }
-        }}
+  var alreadyExists = false;
 
-
-
+  if(this.issues.collection.length == 0)
+  {
+    this.issues.add(issue);
+  }
+  else
+  {
+      for(var i = 0; i<this.issues.collection.length;i++)
+      {
+          if(issue_name == this.issues.collection[i].description && localStorage.getItem("index") == this.issues.collection[i].index )
+          {
+             var alreadyExists = true;
+          }
+      }
+      if(!alreadyExists)
+      {
+        this.issues.add(issue);
+      }
+      else
+      {
+        alert("An Issue with the same name is already part of your Project List!");
+      }
+    }
+  }
 }
 </script>
 </createIssue>

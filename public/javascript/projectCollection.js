@@ -5,6 +5,8 @@ class ProjectCollection {
         if(tag) {
             this.riotjs_tag = tag;
         }
+        localStorage.setItem("index",-1);
+
     }
 
     save(){
@@ -24,4 +26,6 @@ class ProjectCollection {
     fetch(){
       this.collection = JSON.parse(localStorage.getItem("projectList")) || [];
     }
+
+
 }

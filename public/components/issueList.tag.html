@@ -4,7 +4,7 @@
 <createIssue issues ="{ this.issues }"></createIssue>
 
 <fieldset id="issuesFieldset">
-<legend>Issues: </legend>
+<legend>{ name }</legend>
   <div class="row" id="issuesDiv">
     <div class="col-sm-12">
       <div class="panel panel-primary" id="result_panel">
@@ -12,7 +12,7 @@
           <!--<ul class="list-group">-->
 
               <ul>
-            	<issue each="{ allIssues() }"></issue>
+            	<issue issues ="{ this.issues }"  each="{ allIssues() }"></issue>
 
           </ul>
         </div>
@@ -23,15 +23,33 @@
 </div>
 
 <script>
-    console.log("IssueList");
-
-    this.issues = new issueCollection(this);
+    this.issues = opts.issues;
+    this.projects = opts.projects;
     this.issues.fetch();
-
+    this.name = "Issues: ";
     this.issues.save();
-        this.allIssues = function() {
-            return this.issues.all();
+
+
+    this.allIssues = function() {
+           return  this.issues.allIndex(localStorage.getItem("index"));
         }
+
+
+            this.on('update',function () {
+
+                if(localStorage.getItem("index")>=0)
+                {
+                    this.name =  opts.projects.collection[localStorage.getItem("index")].projectName+" :";
+
+                }
+                else
+                {
+                    this.name = "Issues: ";
+                }
+
+            });
+
+
 
 </script>
 

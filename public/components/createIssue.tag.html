@@ -28,19 +28,32 @@ this.issues = opts.issues;
 console.log(this.issues);
 
 submit(e) {
+
+    if(localStorage.getItem("index")>=0)
+    {
+
+
+
 	e.preventDefault();
 	var issue_name = this.refs.issue_name.value;
 	var issue_date = this.refs.issue_date.value;
 	var issue_prio = this.refs.issue_prio.value;
 
 	issue = {
+
+        'index':localStorage.getItem("index"),
 		'description': issue_name,
 		'priority': issue_prio,
 		'duedate': issue_date,
 		'done': false,
+
 	};
 
   this.issues.add(issue);
+    } else{
+    }
+
+
 
 }
 </script>

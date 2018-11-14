@@ -10,7 +10,7 @@
 
             <div class="col-6 col-sm-4">
                 <ul class="list-group">
-                    <project each="{ allProjects() }"> </project>
+                    <project issues = "{ this.issues }" each="{ allProjects() }"> </project>
                  </ul>
             </div>
 
@@ -23,10 +23,12 @@
   </div>
 </fieldset>
 
+      <issueList projects= "{ this.projects }" issues = "{ this.issues }" ></issueList>
+
     <script>
-        console.log("ProjectList");
 
         this.projects = new ProjectCollection(this);
+        this.issues = new issueCollection(this);
         this.projects.fetch();
 
         this.projects.save();

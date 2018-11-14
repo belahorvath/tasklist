@@ -3,26 +3,20 @@
 
 
     <script>
-        //this.issues = new issueCollection(this);
-        //this.issues.fetch();
 
+    this.issues = opts.issues;
 
         issue(e){
           e.preventDefault();
-          //var project = this.projects.collection[this.refs.index.value];
-          console.log("test");
-        //project.collection.containedIssues;
+          localStorage.setItem("index",this.index);
+
+            this.issues.update();
 
 
 
         }
 
-/*
-        this.issues.save();
-        this.allProjects = function() {
-            return this.issues.all();
-        }
-*/
+
     </script>
 
 </project>

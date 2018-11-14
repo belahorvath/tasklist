@@ -15,6 +15,19 @@ class issueCollection {
         return this.collection;
     }
 
+    allIndex(index){
+        var col = [];
+    for(var i = 0; i<this.collection.length;i++){
+
+        if(this.collection[i].index == index)
+        {
+            col.push(this.collection[i]);
+        }
+
+    }
+        return col;
+    }
+
     add(model) {
         this.collection.push(model);
         this.save();
@@ -23,5 +36,11 @@ class issueCollection {
 
     fetch(){
       this.collection = JSON.parse(localStorage.getItem("issueCollection")) || [];
+    }
+
+
+    update(){
+        this.riotjs_tag.update();
+
     }
 }

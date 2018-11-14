@@ -14,8 +14,22 @@
 
 //TODO
 
+    this.issues = opts.issues;
+
+
+console.log(this.issues);
 delete_issue(e){
-  console.log("deleted");
+    console.log(this.issues.length);
+
+    for(var i = 0; i<this.issues.length;i++)
+{   console.log(this.issues[i].description);
+    if(this.description == this.issues[i].description && this.index == this.issues[i].index )
+    {
+        console.log("delete");
+        this.issues.splice(i,1);
+    }
+}
+this.issues.update();
 }
 
 update_done(e){
@@ -25,3 +39,5 @@ update_done(e){
 </script>
 
 </issue>
+
+

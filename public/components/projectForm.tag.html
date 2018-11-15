@@ -7,13 +7,23 @@
     <script>
 
       this.projects = opts.projects;
-
+      var alreadyExists = false;
+      console.log(this.projects);
       createProject(e) {
       e.preventDefault();
 
         if(this.refs.projectName.value) {
-        this.projects.add({"index" : this.projects.collection.length, "projectName" : this.refs.projectName.value, "containedIssues" : {}});
-        this.refs.projectName.value="";
+          for(var i = 0; i<this.projects.collection.length;i++){
+            if(this.refs.projectName.value == this.projects.collection[i].projectName)
+            {
+              alreadyExists = true;
+              alert("Project already exists, please use the existing project!");
+            }
+          }
+          if(alreadyExists == false){
+            this.projects.add({"index" : this.projects.collection.length, "projectName" : this.refs.projectName.value});
+            this.refs.projectName.value="";
+          }
         }
       }
 

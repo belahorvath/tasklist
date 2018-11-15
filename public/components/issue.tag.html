@@ -12,8 +12,6 @@
 
 <script>
 
-//TODO
-
     this.issues = opts.issues;
 
 
@@ -21,7 +19,7 @@ delete_issue(e){
 
     for(var i = 0; i<this.issues.collection.length;i++)
     {
-        if(this.description == this.issues.collection[i].description && this.index == this.issues.collection[i].index )
+        if(this.client_id == this.issues.collection[i].client_id && this.index == this.issues.collection[i].index )
     {
         this.issues.collection.splice(i,1);
     }
@@ -34,9 +32,15 @@ delete_issue(e){
 update_done(e){
     for(var i = 0; i<this.issues.collection.length;i++)
     {
-        if(this.description == this.issues.collection[i].description && this.index == this.issues.collection[i].index )
+        if(this.client_id == this.issues.collection[i].client_id && this.index == this.issues.collection[i].index )
         {
+          if(this.done == true)
+          {
+            this.issues.collection[i].done = false;
+          }
+          else{
             this.issues.collection[i].done = true;
+          }
         }
     }
     this.issues.save();

@@ -1,4 +1,4 @@
-class issueCollection {
+class IssueCollection {
 
     constructor(tag) {
         this.collection = [];

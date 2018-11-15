@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-md-2 mb-2">
         <select ref="issue_prio" class="form-control">
-          <option value="">Priority</option>
+          <option value="0">Priority</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -25,54 +25,40 @@
 <script>
 this.issues = opts.issues;
 
-console.log(this.issues);
 
 submit(e) {
+e.preventDefault();
 
-    if(localStorage.getItem("index")>=0)
-    {
+if(localStorage.getItem("index")>=0)
+  {
 
-
-	e.preventDefault();
 	var issue_name = this.refs.issue_name.value;
 	var issue_date = this.refs.issue_date.value;
 	var issue_prio = this.refs.issue_prio.value;
 
 	issue = {
 
-    'index':localStorage.getItem("index"),
+    'client_id': uuidv4(),
+    'index': localStorage.getItem("index"),
 		'description': issue_name,
 		'priority': issue_prio,
 		'duedate': issue_date,
 		'done': false,
 
 	};
-
-  var alreadyExists = false;
-
-  if(this.issues.collection.length == 0)
-  {
     this.issues.add(issue);
+    this.refs.issue_name.value = "";
+    this.refs.issue_date.value = "";
+    this.refs.issue_prio.value = "0";
   }
-  else
-  {
-      for(var i = 0; i<this.issues.collection.length;i++)
-      {
-          if(issue_name == this.issues.collection[i].description && localStorage.getItem("index") == this.issues.collection[i].index )
-          {
-             var alreadyExists = true;
-          }
-      }
-      if(!alreadyExists)
-      {
-        this.issues.add(issue);
-      }
-      else
-      {
-        alert("An Issue with the same name is already part of your Project List!");
-      }
-    }
-  }
+}
+
+// generate uuidv4
+function uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
 }
 </script>
 </createIssue>

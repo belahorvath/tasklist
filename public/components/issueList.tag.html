@@ -10,10 +10,8 @@
       <div class="panel panel-primary" id="result_panel">
         <div class="panel-body">
           <!--<ul class="list-group">-->
-
-              <ul>
+          <ul>
             	<issue issues ="{ this.issues }"  each="{ allIssues() }"></issue>
-
           </ul>
         </div>
       </div>
@@ -35,21 +33,19 @@
         }
 
 
-            this.on('update',function () {
+    this.on('update',function () {
 
-                if(localStorage.getItem("index")>=0)
-                {
-                    this.name =  opts.projects.collection[localStorage.getItem("index")].projectName+" :";
+        if(localStorage.getItem("index")>=0)
+          {
+            this.name =  opts.projects.collection[localStorage.getItem("index")].projectName+" :";
 
-                }
-                else
-                {
-                    this.name = "Issues: ";
-                }
+          }
+          else
+          {
+              this.name = "Issues: ";
+          }
 
-            });
-
-
+      });
 
 </script>
 

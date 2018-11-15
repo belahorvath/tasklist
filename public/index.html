@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="./css/datepicker.css" type="text/css">
   <script src="./javascript/datepicker.js"></script>
  <script src="./javascript/projectCollection.js"></script>
-  <script src="./javascript/issueCollection.js"></script>
+  <script src="./javascript/IssueCollection.js"></script>
 
 
   <script src="./javascript/riot+compiler.js"></script>
@@ -42,17 +42,9 @@
 
 <body>
 
-                <!--Project list after they get created-->
+        <!--Project list after they get created-->
 
           <projectList></projectList>
-
-
-
-
-<!--Issue list after they get created-->
-
-
-
 
           <script type="riot/tag" src="./components/projectList.tag.html"></script>
           <script type="riot/tag" src="./components/projectForm.tag.html"></script>
@@ -62,8 +54,6 @@
           <script type="riot/tag" src="./components/issue.tag.html"></script>
 
           <script>riot.mount('*');</script>
-
-
 
   <footer class="footer">
     <div class="container" id="text-mutedDIV">

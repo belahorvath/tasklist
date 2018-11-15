@@ -28,14 +28,13 @@
     <script>
 
         this.projects = new ProjectCollection(this);
-        this.issues = new issueCollection(this);
+        this.issues = new IssueCollection(this);
         this.projects.fetch();
-
         this.projects.save();
             this.allProjects = function() {
                 return this.projects.all();
             }
 
     </script>
-    
+
 </projectList>

@@ -1,14 +1,13 @@
 <projectForm>
-<form id="projectForm">
+<form onsubmit={ createProject } id="projectForm">
     <input type="text"  ref="projectName" name="project" placeholder="new Project...">
-  <button id="btnProject" class="btn btn-primary" onclick="{ createProject }">Create Project</button>
+  <button id="btnProject" class="btn btn-primary" type="submit">Create Project</button>
 
 </form>
     <script>
-
       this.projects = opts.projects;
       var alreadyExists = false;
-      console.log(this.projects);
+
       createProject(e) {
       e.preventDefault();
 

@@ -1,7 +1,7 @@
 <issueList>
 <div class="container">
 
-<createIssue issues ="{ this.issues }"></createIssue>
+<createIssue projects = "{ this.projects }" issues = "{ this.issues }"></createIssue>
 
 <fieldset id="issuesFieldset">
 <legend>{ name }</legend>
@@ -21,32 +21,47 @@
 </div>
 
 <script>
-    this.issues = opts.issues;
-    this.projects = opts.projects;
-    this.issues.fetch();
-    this.name = "Issues: ";
-    this.issues.save();
+  this.issues = opts.issues;
+      this.projects = opts.projects;
+      this.issues.fetch();
+      this.name = "Issues: ";
+      this.issues.save();
+      for(i=0 ; i<this.projects.collection.length;i++)
+      {
+          if(this.projects.collection[i].active)
+          {
+              this.name =  opts.projects.collection[i].projectName+" :";
+
+          }
 
 
-    this.allIssues = function() {
-           return  this.issues.allIndex(localStorage.getItem("index"));
+      }
+
+      this.allIssues = function() {
+        for(i=0 ; i<this.projects.collection.length;i++)
+        {
+            if(this.projects.collection[i].active)
+            {
+                this.index =  opts.projects.collection[i].index;
+            }
         }
+        return  this.issues.allIndex(this.index);
+      }
+
+      this.on('update',function () {
+          for(i=0 ; i<this.projects.collection.length;i++)
+                  {
+                      if(this.projects.collection[i].active)
+                      {
+                          this.name =  opts.projects.collection[i].projectName+" :";
+
+                      }
 
 
-    this.on('update',function () {
+                  }
 
-        if(localStorage.getItem("index")>=0)
-          {
-            this.name =  opts.projects.collection[localStorage.getItem("index")].projectName+" :";
 
-          }
-          else
-          {
-              this.name = "Issues: ";
-          }
-
-      });
-
+              });
 </script>
 
 </issueList>

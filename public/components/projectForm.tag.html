@@ -20,7 +20,10 @@
             }
           }
           if(alreadyExists == false){
-            this.projects.add({"index" : this.projects.collection.length, "projectName" : this.refs.projectName.value});
+            this.projects.add({
+              "index" : this.projects.collection.length,
+              "projectName" : this.refs.projectName.value,
+              "active" : false});
             this.refs.projectName.value="";
           }
         }

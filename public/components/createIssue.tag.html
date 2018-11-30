@@ -24,13 +24,24 @@
 
 <script>
 this.issues = opts.issues;
-
+this.projects = opts.projects;
+this.active = false;
 
 submit(e) {
 e.preventDefault();
 
-if(localStorage.getItem("index")>=0)
-  {
+for (i = 0; i < this.projects.collection.length; i++) {
+        if (this.projects.collection[i].active) {
+            this.active = true;
+            this.index = this.projects.collection[i].index;
+            break;
+
+        } else {
+            this.active = false;
+        }
+    }
+
+    if (this.active) {
 
 	var issue_name = this.refs.issue_name.value;
 	var issue_date = this.refs.issue_date.value;
@@ -39,7 +50,7 @@ if(localStorage.getItem("index")>=0)
 	issue = {
 
     'client_id': uuidv4(),
-    'index': localStorage.getItem("index"),
+    'index': this.index,
 		'description': issue_name,
 		'priority': issue_prio,
 		'duedate': issue_date,

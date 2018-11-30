@@ -4,14 +4,27 @@
 
     <script>
 
-    this.issues = opts.issues;
+      this.issues = opts.issues;
+      this.projects = opts.projects;
 
-        issue(e){
-          e.preventDefault();
-          localStorage.setItem("index",this.index);
+          issue(e){
+            e.preventDefault();
 
-          this.issues.update();
-        }
+
+              for(i = 0;i<this.projects.collection.length;i++)
+              {
+                  if(this.projects.collection[i].projectName == this.projectName)
+                  {
+
+                      this.projects.collection[i].active = true;
+
+                  } else {
+                      this.projects.collection[i].active = false;}
+              }
+              this.projects.save();
+              this.issues.update();
+
+          }
     </script>
-    
+
 </project>

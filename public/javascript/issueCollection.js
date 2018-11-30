@@ -19,7 +19,7 @@ class IssueCollection {
         var col = [];
     for(var i = 0; i<this.collection.length;i++){
 
-        if(this.collection[i].index == index)
+        if(this.collection[i].project_id == index)
         {
             col.push(this.collection[i]);
         }

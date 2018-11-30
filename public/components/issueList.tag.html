@@ -21,7 +21,7 @@
 </div>
 
 <script>
-  this.issues = opts.issues;
+      this.issues = opts.issues;
       this.projects = opts.projects;
       this.issues.fetch();
       this.name = "Issues: ";
@@ -31,10 +31,7 @@
           if(this.projects.collection[i].active)
           {
               this.name =  opts.projects.collection[i].projectName+" :";
-
           }
-
-
       }
 
       this.allIssues = function() {
@@ -42,10 +39,10 @@
         {
             if(this.projects.collection[i].active)
             {
-                this.index =  opts.projects.collection[i].index;
+                this.id =  opts.projects.collection[i].id;
             }
         }
-        return  this.issues.allIndex(this.index);
+        return  this.issues.allIndex(this.id);
       }
 
       this.on('update',function () {
@@ -54,13 +51,8 @@
                       if(this.projects.collection[i].active)
                       {
                           this.name =  opts.projects.collection[i].projectName+" :";
-
                       }
-
-
-                  }
-
-
+                }
               });
 </script>
 

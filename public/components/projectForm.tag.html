@@ -21,7 +21,8 @@
           }
           if(alreadyExists == false){
             this.projects.add({
-              "index" : this.projects.collection.length,
+              "id" : this.projects.collection.length,
+              'client_id': uuidv4(),
               "projectName" : this.refs.projectName.value,
               "active" : false});
             this.refs.projectName.value="";
@@ -29,5 +30,12 @@
         }
       }
 
+      // generate uuidv4
+      function uuidv4() {
+          return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+              var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+              return v.toString(16);
+          });
+}
 </script>
 </projectForm>

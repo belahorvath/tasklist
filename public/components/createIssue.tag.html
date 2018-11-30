@@ -33,7 +33,7 @@ e.preventDefault();
 for (i = 0; i < this.projects.collection.length; i++) {
         if (this.projects.collection[i].active) {
             this.active = true;
-            this.index = this.projects.collection[i].index;
+            this.id = this.projects.collection[i].id;
             break;
 
         } else {
@@ -48,13 +48,13 @@ for (i = 0; i < this.projects.collection.length; i++) {
 	var issue_prio = this.refs.issue_prio.value;
 
 	issue = {
-
+    'id' : this.issues.collection.length,
     'client_id': uuidv4(),
-    'index': this.index,
-		'description': issue_name,
-		'priority': issue_prio,
-		'duedate': issue_date,
-		'done': false,
+    'project_id': this.id,
+    'done': false,
+		'title': issue_name,
+		'due_date': issue_date,
+    'priority': issue_prio,
 
 	};
     this.issues.add(issue);

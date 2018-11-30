@@ -1,7 +1,7 @@
 <issue>
   <li class="list-group-item">
       <span>
-        <strong>{ description }</strong>
+        <strong>{ title }</strong>
       </span>
       <div id="li-rigthbound">
         <input type="checkbox" name="done" ref="done" checked="{ done }" onclick="{ update_done }">
@@ -19,7 +19,7 @@ delete_issue(e){
 
     for(var i = 0; i<this.issues.collection.length;i++)
     {
-        if(this.client_id == this.issues.collection[i].client_id && this.index == this.issues.collection[i].index )
+        if(this.client_id == this.issues.collection[i].client_id && this.project_id == this.issues.collection[i].project_id )
     {
         this.issues.collection.splice(i,1);
     }
@@ -32,7 +32,7 @@ delete_issue(e){
 update_done(e){
     for(var i = 0; i<this.issues.collection.length;i++)
     {
-        if(this.client_id == this.issues.collection[i].client_id && this.index == this.issues.collection[i].index )
+        if(this.client_id == this.issues.collection[i].client_id && this.project_id == this.issues.collection[i].project_id )
         {
           if(this.done == true)
           {

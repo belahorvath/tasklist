@@ -8,24 +8,18 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
-/** FÜR MILESTONE 3
-
 var projects = [];
 
 app.post('/projects', function(req, res) {
-  projects.push(req.body.project);
-res.status(201).json({'project': projects});
-    
-  
-   
+  projects = req.body;
+});
+
+app.get('/projects', function(req, res) {
+  console.log(projects);
+  res.send(JSON.stringify(projects));
 });
 
 
-app.get('/projects', function(req, res) {
-  res.status(200).json({'project': projects});
-}); 
-
-**/
 app.listen(8080, function(){
   console.log("ready captain.");
 });

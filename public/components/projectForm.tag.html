@@ -1,5 +1,5 @@
 <projectForm>
-<form onsubmit={ createProject } id="projectForm">
+<form onsubmit="{ createProject }" id="projectForm">
     <input type="text"  ref="projectName" name="project" placeholder="new Project...">
   <button id="btnProject" class="btn btn-primary" type="submit">Create Project</button>
 
@@ -21,10 +21,10 @@
           }
           if(alreadyExists == false){
             this.projects.add({
-              "id" : this.projects.collection.length,
+              'id' : this.projects.collection.length,
               'client_id': uuidv4(),
-              "projectName" : this.refs.projectName.value,
-              "active" : false});
+              'projectName' : this.refs.projectName.value,
+              'active' : false});
             this.refs.projectName.value="";
           }
         }

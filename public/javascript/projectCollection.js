@@ -8,7 +8,14 @@ class ProjectCollection {
     }
 
     save(){
-      localStorage.setItem("projectList", JSON.stringify(this.collection));
+      //localStorage.setItem("projectList", JSON.stringify(this.collection));
+      console.log(this.collection);
+      $.ajax({
+          type: "POST",
+          url: '/projects',
+          data: JSON.stringify(this.collection),
+          dataType: 'json'
+          });
     }
 
     all() {
@@ -22,8 +29,14 @@ class ProjectCollection {
     }
 
     fetch(){
-      this.collection = JSON.parse(localStorage.getItem("projectList")) || [];
+      //this.collection = JSON.parse(localStorage.getItem("projectList")) || [];
+      $.ajax({
+          type: "GET",
+          url: '/projects',
+          }).done(function(data){
+          console.log(data);
+          this.collection = JSON.parse(data);
+          });
     }
-
 
 }

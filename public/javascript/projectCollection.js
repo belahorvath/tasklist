@@ -32,10 +32,11 @@ class ProjectCollection {
       //this.collection = JSON.parse(localStorage.getItem("projectList")) || [];
       $.ajax({
           type: "GET",
-          url: '/projects',
+          url: '/projects'
           }).done(function(data){
           console.log(data);
-          this.collection = JSON.parse(data);
+          this.collection = data;
+          console.log(this.collecion);
           });
     }
 

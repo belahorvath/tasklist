@@ -7,8 +7,10 @@ const express = require('express'),
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
+//Lokale liste auf dem Server
 var projects = [];
+
+//Projekte
 
 app.post('/projects', function(req, res) {
   projects = req.body;
@@ -16,7 +18,7 @@ app.post('/projects', function(req, res) {
 
 app.get('/projects', function(req, res) {
   console.log(projects);
-  res.send(JSON.stringify(projects));
+  res.json(projects);
 });
 
 

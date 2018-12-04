@@ -10,7 +10,6 @@
 
       createProject(e) {
       e.preventDefault();
-
         if(this.refs.projectName.value) {
           for(var i = 0; i<this.projects.collection.length;i++){
             if(this.refs.projectName.value == this.projects.collection[i].projectName)

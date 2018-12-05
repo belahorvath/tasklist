@@ -34,6 +34,7 @@ for (i = 0; i < this.projects.collection.length; i++) {
         if (this.projects.collection[i].active) {
             this.active = true;
             this.id = this.projects.collection[i].id;
+            this.project_client_id = this.projects.collection[i].client_id;
             break;
 
         } else {
@@ -50,11 +51,14 @@ for (i = 0; i < this.projects.collection.length; i++) {
 	issue = {
     'id' : this.issues.collection.length,
     'client_id': uuidv4(),
+    'project_client_id' : this.project_client_id,
     'project_id': this.id,
     'done': false,
 		'title': issue_name,
 		'due_date': issue_date,
     'priority': issue_prio,
+    'created_at' : Date.now(),
+    'updated_at' : Date.now()
 
 	};
     this.issues.add(issue);

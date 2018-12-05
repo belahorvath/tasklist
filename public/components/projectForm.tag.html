@@ -19,14 +19,40 @@
             }
           }
           if(alreadyExists == false){
+
+            var tempProject = {
+              "id" : this.projects.collection.length,
+              "client_id": uuidv4(),
+              "title" : this.refs.projectName.value,
+              "active" : false};
+
+            $.ajax({
+                type: "POST",
+                url: '/api/projects',
+                data: JSON.stringify(tempProject),
+                dataType: 'json',
+                success: function(data,status){console.log(data); console.log(status);}
+              });
+
+              /*).done(function(data){
+                console.log(data);
+                //this.projects.add(JSON.parse(data));
+              });
+
+/*
             this.projects.add({
               'id' : this.projects.collection.length,
               'client_id': uuidv4(),
               'projectName' : this.refs.projectName.value,
               'active' : false});
+              */
             this.refs.projectName.value="";
           }
         }
+      }
+
+      var successHandler = function (data){
+        console.log(data);
       }
 
       // generate uuidv4

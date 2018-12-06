@@ -10,6 +10,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
+/*
+
 //PROJECTS
 app.get('/api/projects/', function(req,res) {
 
@@ -58,7 +60,6 @@ console.log(req.body);
       console.log('error:', error);
       console.log('statusCode:', response && response.statusCode);
     }
-    */
     console.log('error:', error);
     console.log('statusCode:', response && response.statusCode);
     console.log('body', body);
@@ -66,7 +67,7 @@ console.log(req.body);
   });
 
 });
-
+*/
 app.listen(8080, function(){
   console.log("ready captain.");
 });

@@ -1,5 +1,5 @@
 <project>
-    <input   onclick="{ issue }" value="{ projectName }" ref="{ projectName }" id="projectInput" type="text" readonly>
+    <input   onclick="{ issue }" value="{ title }" ref="{ title }" id="projectInput" type="text" readonly>
 
 
     <script>
@@ -13,7 +13,7 @@
 
               for(i = 0;i<this.projects.collection.length;i++)
               {
-                  if(this.projects.collection[i].projectName == this.projectName)
+                  if(this.projects.collection[i].title == this.title)
                   {
 
                       this.projects.collection[i].active = true;

@@ -13,7 +13,7 @@
       e.preventDefault();
         if(this.refs.projectName.value) {
           for(var i = 0; i<this.projects.collection.length;i++){
-            if(this.refs.projectName.value == this.projects.collection[i].projectName)
+            if(this.refs.projectName.value == this.projects.collection[i].title)
             {
               alreadyExists = true;
               alert("Project already exists, please use the existing project!");

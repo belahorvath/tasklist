@@ -76,10 +76,11 @@ console.log(req.body);
                   console.log(data);
                   //this.projects.add(data);
                 });
-  */
 
 });
+
 */
+
 app.listen(8080, function(){
   console.log("ready captain.");
 });

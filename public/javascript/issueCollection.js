@@ -36,6 +36,15 @@ class IssueCollection {
 
     fetch(){
       this.collection = JSON.parse(localStorage.getItem("issueCollection")) || [];
+          /*
+          $.ajax({
+            type: "GET",
+            url: 'http://zhaw-issue-tracker-api.herokuapp.com/api/projects/'+ data +'/issues',
+            dataType: 'json'
+              }).done(function(data){
+                this.collection = data;
+              });
+              */
     }
 
 

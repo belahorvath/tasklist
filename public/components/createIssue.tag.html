@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-md-2 mb-2">
         <select ref="issue_prio" class="form-control">
-          <option value="0">Priority</option>
+          <option value="1">Priority</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -76,7 +76,6 @@ var getDate = function(){
 
 	};
 
-console.log(new Date(issue.due_date));
 
   $.ajax({
       type: "POST",
@@ -86,16 +85,13 @@ console.log(new Date(issue.due_date));
       dataType: 'json',
       error : function(error){console.log(error);},
       success: function(data,status){
-          //main.projects.add(data);
-        console.log(data);
-        console.log(status);
+          main.issues.add(data);
       }
     });
 
-    //this.issues.add(issue);
     this.refs.issue_name.value = "";
     this.refs.issue_date.value = "";
-    this.refs.issue_prio.value = "0";
+    this.refs.issue_prio.value = "1";
   }
 }
 

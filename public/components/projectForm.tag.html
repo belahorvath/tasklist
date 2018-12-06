@@ -33,23 +33,13 @@
                 data: JSON.stringify(tempProject),
                 contentType: 'application/json',
                 dataType: 'json',
+                error : function(error){console.log(error);},
                 success: function(data,status){
                     main.projects.add(data);
                 }
               });
 
-/*
-              $.ajax({
-                  type: "GET",
-                  url: '/api/projects',
-                  data: {"id" : 13000},
-                  dataType: 'json'
-                }).done(function(data){
-                console.log(data);
-                //this.projects.add(data);
-              });
-*/
-            this.refs.projectName.value="";
+            main.refs.projectName.value="";
           }
         }
       }

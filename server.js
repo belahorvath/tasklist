@@ -66,6 +66,18 @@ console.log(req.body);
     //res.send(body);
   });
 
+  /* TEMPLATE GET with QUERY 13000
+                $.ajax({
+                    type: "GET",
+                    url: '/api/projects',
+                    data: {"id" : 13000},
+                    dataType: 'json'
+                  }).done(function(data){
+                  console.log(data);
+                  //this.projects.add(data);
+                });
+  */
+
 });
 */
 app.listen(8080, function(){

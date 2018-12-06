@@ -22,6 +22,18 @@ delete_issue(e){
         if(this.client_id == this.issues.collection[i].client_id && this.project_id == this.issues.collection[i].project_id )
     {
         this.issues.collection.splice(i,1);
+
+        $.ajax({
+            type: "DELETE",
+            url: 'http://zhaw-issue-tracker-api.herokuapp.com/api/projects/'+ this.issues.collection[i].project_id +'/issues/'+ this.issues.collection[i].id,
+            data: JSON.stringify(this.issues.collection[i]),
+            contentType: 'application/json',
+            dataType: 'json',
+            error : function(error){console.log(error);},
+            success: function(data,status){
+                console.log("Successfully deleted Issue");
+            }
+          });
     }
 }
     this.issues.save();
@@ -41,6 +53,17 @@ update_done(e){
           else{
             this.issues.collection[i].done = true;
           }
+          $.ajax({
+              type: "PUT",
+              url: 'http://zhaw-issue-tracker-api.herokuapp.com/api/projects/'+ this.issues.collection[i].project_id +'/issues/'+ this.issues.collection[i].id,
+              data: JSON.stringify(this.issues.collection[i]),
+              contentType: 'application/json',
+              dataType: 'json',
+              error : function(error){console.log(error);},
+              success: function(data,status){
+                  console.log("Successfully updated issue status");
+              }
+            });
         }
     }
     this.issues.save();

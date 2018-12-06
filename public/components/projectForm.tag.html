@@ -9,6 +9,7 @@
       var alreadyExists = false;
 
       createProject(e) {
+        var main = this;
       e.preventDefault();
         if(this.refs.projectName.value) {
           for(var i = 0; i<this.projects.collection.length;i++){
@@ -25,20 +26,17 @@
               "client_id": uuidv4(),
               "title" : this.refs.projectName.value,
               "active" : false};
-            var test =   {
-                "id": 0,
-                "created_at": "2018-12-05T14:36:53.857Z",
-                "updated_at": "2018-12-05T14:36:53.857Z",
-                "client_id": "string",
-                "title": "string",
-                "active": false
-              };
+
             $.ajax({
                 type: "POST",
                 url: '/api/projects',
-                data: JSON.stringify(test),
+                data: JSON.stringify(tempProject),
+                contentType: 'application/json',
                 dataType: 'json',
-                success: function(data,status){console.log(data); console.log(status);}
+                success: function(data,status){
+                    main.projects.add(data);
+                  console.log(status);
+                }
               });
 
 /*
@@ -52,13 +50,6 @@
                 //this.projects.add(data);
               });
 */
-/*
-            this.projects.add({
-              'id' : this.projects.collection.length,
-              'client_id': uuidv4(),
-              'projectName' : this.refs.projectName.value,
-              'active' : false});
-              */
             this.refs.projectName.value="";
           }
         }

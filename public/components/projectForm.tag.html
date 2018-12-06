@@ -29,13 +29,12 @@
 
             $.ajax({
                 type: "POST",
-                url: '/api/projects',
+                url: 'http://zhaw-issue-tracker-api.herokuapp.com/api/projects',
                 data: JSON.stringify(tempProject),
                 contentType: 'application/json',
                 dataType: 'json',
                 success: function(data,status){
                     main.projects.add(data);
-                  console.log(status);
                 }
               });
 

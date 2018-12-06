@@ -11,7 +11,7 @@
         </select>
       </div>
       <div class="col-md-3 mb-2">
-        <input ref="issue_date" type="text" id="datepicker" placeholder="Pick date..." onclick="date()">
+        <input ref="issue_date" type="date" id="datepicker" placeholder="Pick date...">
       </div>
       <div class="col-md-4 mb-2">
         <input ref="issue_name" class="form-control" type="text" name="create_issue" placeholder="new issue...">
@@ -29,6 +29,8 @@ this.active = false;
 
 submit(e) {
 e.preventDefault();
+
+var main = this;
 
 for (i = 0; i < this.projects.collection.length; i++) {
         if (this.projects.collection[i].active) {
@@ -48,6 +50,18 @@ for (i = 0; i < this.projects.collection.length; i++) {
 	var issue_date = this.refs.issue_date.value;
 	var issue_prio = this.refs.issue_prio.value;
 
+
+
+
+var getDate = function(){
+  var time = new Date().getTime();
+  var date = new Date(time);
+  var string = date.toISOString()
+  return string;
+}
+
+
+
 	issue = {
     'id' : this.issues.collection.length,
     'client_id': uuidv4(),
@@ -57,11 +71,28 @@ for (i = 0; i < this.projects.collection.length; i++) {
 		'title': issue_name,
 		'due_date': issue_date,
     'priority': issue_prio,
-    'created_at' : Date.now(),
-    'updated_at' : Date.now()
+    'created_at' : getDate(),
+    'updated_at' : getDate()
 
 	};
-    this.issues.add(issue);
+
+console.log(new Date(issue.due_date));
+
+  $.ajax({
+      type: "POST",
+      url: 'http://zhaw-issue-tracker-api.herokuapp.com/api/projects/'+ issue.project_id +'/issues',
+      data: JSON.stringify(issue),
+      contentType: 'application/json',
+      dataType: 'json',
+      error : function(error){console.log(error);},
+      success: function(data,status){
+          //main.projects.add(data);
+        console.log(data);
+        console.log(status);
+      }
+    });
+
+    //this.issues.add(issue);
     this.refs.issue_name.value = "";
     this.refs.issue_date.value = "";
     this.refs.issue_prio.value = "0";

@@ -31,10 +31,23 @@
         this.issues = new IssueCollection(this);
         this.projects.fetch();
         this.projects.save();
-            this.allProjects = function() {
-                return this.projects.all();
-            }
 
+        //Check which project is currently active and load issues on page refresh!
+        var id = 0;
+        for(i = 0;i<this.projects.collection.length;i++)
+        {
+          if(this.projects.collection[i].active == true)
+          {
+            id = this.projects.collection[i].id;
+          }
+        }
+
+        //$.ajax get request for project id
+        this.issues.fetch(id);
+
+        this.allProjects = function() {
+            return this.projects.all();
+        }
     </script>
 
 </projectList>

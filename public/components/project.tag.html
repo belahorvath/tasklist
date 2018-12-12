@@ -18,13 +18,14 @@
 
                       this.projects.collection[i].active = true;
 
+                      //When clicking a project which is "Active" load the new issue list.
+                      this.issues.fetch(this.projects.collection[i].id);
+
                   } else {
                       this.projects.collection[i].active = false;}
 
               }
               this.projects.save();
-              this.issues.update();
-
           }
     </script>
 

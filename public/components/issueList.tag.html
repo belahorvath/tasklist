@@ -23,9 +23,8 @@
 <script>
       this.issues = opts.issues;
       this.projects = opts.projects;
-      this.issues.fetch();
       this.name = "Issues: ";
-      this.issues.save();
+
       for(i=0 ; i<this.projects.collection.length;i++)
       {
           if(this.projects.collection[i].active)

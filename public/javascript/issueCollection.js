@@ -8,7 +8,6 @@ class IssueCollection {
     }
 
     save(){
-      localStorage.setItem("issueCollection", JSON.stringify(this.collection));
     }
 
     all() {
@@ -30,21 +29,21 @@ class IssueCollection {
 
     add(model) {
         this.collection.push(model);
-        this.save();
+        //this.save();
         this.riotjs_tag.update();
     }
 
-    fetch(){
-      this.collection = JSON.parse(localStorage.getItem("issueCollection")) || [];
-          /*
+    fetch(data){
+      var main = this;
           $.ajax({
             type: "GET",
             url: 'http://zhaw-issue-tracker-api.herokuapp.com/api/projects/'+ data +'/issues',
             dataType: 'json'
               }).done(function(data){
-                this.collection = data;
+                main.collection = data;
+                main.riotjs_tag.update();
               });
-              */
+
     }
 
 

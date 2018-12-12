@@ -21,8 +21,6 @@ delete_issue(e){
     {
         if(this.client_id == this.issues.collection[i].client_id && this.project_id == this.issues.collection[i].project_id )
     {
-        this.issues.collection.splice(i,1);
-        console.log(this.issues);
 
         $.ajax({
             type: "DELETE",
@@ -35,17 +33,17 @@ delete_issue(e){
                 console.log("Successfully deleted Issue");
             }
           });
+
     }
+        this.issues.update();
 }
-    this.issues.save();
-    this.issues.update();
+
 
 }
 
 update_done(e){
     for(var i = 0; i<this.issues.collection.length;i++)
     {
-              console.log(this.issues);
         if(this.client_id == this.issues.collection[i].client_id && this.project_id == this.issues.collection[i].project_id )
         {
           if(this.done == true)
@@ -68,7 +66,6 @@ update_done(e){
             });
         }
     }
-    this.issues.save();
     this.issues.update();
 
 }

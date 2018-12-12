@@ -7,9 +7,6 @@ class IssueCollection {
         }
     }
 
-    save(){
-    }
-
     all() {
         return this.collection;
     }
@@ -29,7 +26,6 @@ class IssueCollection {
 
     add(model) {
         this.collection.push(model);
-        //this.save();
         this.riotjs_tag.update();
     }
 
@@ -49,6 +45,5 @@ class IssueCollection {
 
     update(){
         this.riotjs_tag.update();
-
     }
 }

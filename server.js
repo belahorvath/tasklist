@@ -3,6 +3,7 @@ const express = require('express'),
       bodyParser = require('body-parser'),
       app = express();
 var path = require('path')
+var morgan = require('morgan');
 var request = require('request');
 
 app.use(express.static('public'));

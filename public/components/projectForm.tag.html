@@ -33,7 +33,7 @@
                 data: JSON.stringify(tempProject),
                 contentType: 'application/json',
                 dataType: 'json',
-                error : function(data,error){console.log(error); alert(data);},
+                error : function(error){console.log(error); alert(error.responseText);},
                 success: function(data,status){
                     console.log(status);
                     main.projects.add(data);

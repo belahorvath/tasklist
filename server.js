@@ -46,17 +46,36 @@ app.get('/api/projects/', function(req,res) {
 //Projekt POST
 app.post('/api/projects', function(req,res){
 connection.query("INSERT INTO projekt (id, title, active, clientId) VALUES ("+req.body.id +",'" + req.body.title + "'," + req.body.active + ",'" + req.body.client_id + "')", function(err, rows, fields) {
-connection.end();
+
   //Send back the body of the added Projekt is the database write was successfull.
   if (!err) {
     console.log('Query successfull.', );
+    connection.query("SELECT * FROM projekt WHERE clientId ='" + req.body.client_id+"'", function(err, results, fields){
+    if(!err){
+      console.log('Inner Query successfull.', );
 
-    res.status(200).send(req.body);
+      //Default active is false, check if Project is active and set "true".
+      var active = false;
+      if(results[0].active == 1){active = true};
+
+      var tempProject = {
+        "id" : results[0].id,
+        "client_id": results[0].clientId,
+        "title" : results[0].title,
+        "active" : active
+      };
+      res.status(200).send(tempProject);
+    }else{
+      console.log('Error while performing the inner Query.', err);
+      res.status(404).send("Ops, something went wrong! Now fuck off!");
+      }
+    });
   }else {
     //If the database write has failed send back an error.
-    console.log('Error while performing Query.', err);
-    res.status(404).send("Oh uh, something went wrong");
+    console.log('Error while performing the outer Query.', err);
+    res.status(404).send("Ops, something went wrong! Now fuck off!");
     }
+connection.end();
   });
 });
 

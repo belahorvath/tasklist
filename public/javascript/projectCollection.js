@@ -9,6 +9,7 @@ class ProjectCollection {
 
     save(){
       localStorage.setItem("projectList", JSON.stringify(this.collection));
+      console.log(this.collection);
     }
 
     all() {
@@ -22,7 +23,21 @@ class ProjectCollection {
     }
 
     fetch(){
-      this.collection = JSON.parse(localStorage.getItem("projectList")) || [];
+
+      var main = this;
+      $.ajax({
+          type: "GET",
+          url: '/api/projects',
+          contentType: 'application/json',
+          dataType: 'json',
+          error : function(error){console.log(error); alert(error.responseText);},
+          success: function(data,status){
+              console.log(status, data);
+              main.collection = data;
+              main.riotjs_tag.update();
+          }
+        });
+      //this.collection = JSON.parse(localStorage.getItem("projectList")) || [];
     }
 
 }

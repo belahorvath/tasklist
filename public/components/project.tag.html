@@ -13,9 +13,10 @@
 
               for(i = 0;i<this.projects.collection.length;i++)
               {
-                  if(this.projects.collection[i].title == this.title)
+                  if(this.projects.collection[i].clientId == this.clientId)
                   {
 
+                      //Needs updating on the MySQL database aswell!
                       this.projects.collection[i].active = true;
 
                       //When clicking a project which is "Active" load the new issue list.

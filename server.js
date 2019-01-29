@@ -28,28 +28,27 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 //PROJECTS
-app.get('/api/projects/', function(req,res) {
+app.get('/api/projects', function(req,res) {
 
-  var newurl = 'http://zhaw-issue-tracker-api.herokuapp.com/api/projects/' + req.query.id;
-
-  request.get(newurl, function (error, response, body) {
-    if(response.statusCode != 200){
-      console.log('error:', error);
-      console.log('statusCode:', response && response.statusCode);
+  connection.query("SELECT * FROM projekt", function(err, results, fields){
+    if(!err){
+      console.log('Query successfull.');
+      console.log(results);
+      res.status(200).send(results);
+    }else{
+      console.log('Error while performing the Query.', err);
+      res.status(404).send("Ops, something went wrong! Now fuck off!");
     }
-    res.send(body);
-
   });
-
 });
 
 //Projekt POST
 app.post('/api/projects', function(req,res){
-connection.query("INSERT INTO projekt (id, title, active, clientId) VALUES ("+req.body.id +",'" + req.body.title + "'," + req.body.active + ",'" + req.body.client_id + "')", function(err, rows, fields) {
+connection.query("INSERT INTO projekt (title, active, clientId) VALUES ('" + req.body.title + "'," + req.body.active + ",'" + req.body.client_id + "')", function(err, rows, fields) {
 
   //Send back the body of the added Projekt is the database write was successfull.
   if (!err) {
-    console.log('Query successfull.', );
+    console.log('Query successfull.');
     connection.query("SELECT * FROM projekt WHERE clientId ='" + req.body.client_id+"'", function(err, results, fields){
     if(!err){
       console.log('Inner Query successfull.', );
@@ -75,7 +74,6 @@ connection.query("INSERT INTO projekt (id, title, active, clientId) VALUES ("+re
     console.log('Error while performing the outer Query.', err);
     res.status(404).send("Ops, something went wrong! Now fuck off!");
     }
-connection.end();
   });
 });
 

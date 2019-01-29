@@ -6,6 +6,22 @@ var path = require('path')
 var morgan = require('morgan');
 var request = require('request');
 
+var mysql = require('mysql');
+
+var connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "HiVamkash6@",
+  database: "tasklist",
+});
+
+
+connection.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
+
+
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

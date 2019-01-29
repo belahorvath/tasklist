@@ -29,7 +29,7 @@
 
         this.projects = new ProjectCollection(this);
         this.issues = new IssueCollection(this);
-        this.projects.fetch();
+        //this.projects.fetch();
         this.projects.save();
 
         //Check which project is currently active and load issues on page refresh!
@@ -43,7 +43,7 @@
         }
 
         //$.ajax get request for project id
-        this.issues.fetch(id);
+        //this.issues.fetch(id);
 
         this.allProjects = function() {
             return this.projects.all();

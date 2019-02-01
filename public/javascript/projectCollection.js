@@ -8,8 +8,9 @@ class ProjectCollection {
     }
 
     save(){
+      console.log(this);
       localStorage.setItem("projectList", JSON.stringify(this.collection));
-      console.log(this.collection);
+
     }
 
     all() {
@@ -23,9 +24,9 @@ class ProjectCollection {
     }
 
     fetch(){
-
       var main = this;
       $.ajax({
+          async: false,
           type: "GET",
           url: '/api/projects',
           contentType: 'application/json',
@@ -39,5 +40,6 @@ class ProjectCollection {
         });
       //this.collection = JSON.parse(localStorage.getItem("projectList")) || [];
     }
+
 
 }

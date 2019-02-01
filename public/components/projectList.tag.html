@@ -26,10 +26,12 @@
       <issueList projects= "{ this.projects }" issues = "{ this.issues }" ></issueList>
 
     <script>
+      var main =this;
 
         this.projects = new ProjectCollection(this);
         this.issues = new IssueCollection(this);
         this.projects.fetch();
+        //MUSS ASYNCHRONISIERT WERDEN!!
         this.projects.save();
 
         //Check which project is currently active and load issues on page refresh!

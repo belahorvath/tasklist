@@ -20,7 +20,7 @@
                       this.projects.collection[i].active = true;
 
                       //When clicking a project which is "Active" load the new issue list.
-                      this.issues.fetch(this.projects.collection[i].id);
+                      this.issues.fetch(this.projects.collection[i].clientId);
 
                   } else {
                       this.projects.collection[i].active = false;}

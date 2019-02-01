@@ -33,7 +33,6 @@ app.get('/api/projects', function(req,res) {
   connection.query("SELECT * FROM projekt", function(err, results, fields){
     if(!err){
       console.log('Query successfull.');
-      console.log(results);
       res.status(200).send(results);
     }else{
       console.log('Error while performing the Query.', err);
@@ -77,26 +76,20 @@ connection.query("INSERT INTO projekt (title, active, clientId) VALUES ('" + req
   });
 });
 
-/*
-app.post('/api/projects', function(req,res) {
 
-var newurl = 'http://zhaw-issue-tracker-api.herokuapp.com/api/projects';
-var headers = {
-  "Content-Type" : 'application/json'
-}
-console.log(req.body);
-
-  request.post({headers: headers, url: newurl, json : req.body}, function (error, response, body) {
-    if(response.statusCode != 200){
-      console.log('error:', error);
-      console.log('statusCode:', response && response.statusCode);
+//GET ISSUES FOR A PROJECT
+app.get('/api/projects/:projektId/issues', function(req,res) {
+  console.log(req.params.projektId)
+  connection.query("SELECT * FROM issue WHERE projektID ='" + req.params.projektId + "'", function(err, results, fields){
+    if(!err){
+      console.log('Query successfull.');
+      res.status(200).send(results);
+    }else{
+      console.log('Error while performing the Query.', err);
+      res.status(404).send("Ops, something went wrong! Now fuck off!");
     }
-    res.send(body);
   });
-
 });
-
-
 
 /*
 //ISSUES

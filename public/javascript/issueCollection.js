@@ -32,17 +32,19 @@ class IssueCollection {
     fetch(data){
       var main = this;
           $.ajax({
+            async: false,
             type: "GET",
-            url: 'http://zhaw-issue-tracker-api.herokuapp.com/api/projects/'+ data +'/issues',
+            url: '/api/projects/'+ data +'/issues',
             dataType: 'json'
               }).done(function(data){
                 main.collection = data;
-
+                /*
                 //Convert date back from ISO format to normal
                 for(i = 0;i<main.collection.length;i++){
                   var date = new Date(main.collection[i].due_date);
                   main.collection[i].due_date = date.toISOString().substring(0, 10);
                 }
+                */
                 main.riotjs_tag.update();
               });
     }

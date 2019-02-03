@@ -1,11 +1,10 @@
-"use strict";
 const express = require('express'),
       bodyParser = require('body-parser'),
-      app = express();
-var path = require('path')
-var morgan = require('morgan');
-var request = require('request');
-var db = require('./database.js');
+      app = express(),
+      path = require('path'),
+      morgan = require('morgan'),
+      request = require('request'),
+      db = require('./database.js');
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
@@ -13,11 +12,22 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 
+//CREATE A NEW PROJECT
+app.post('/api/projects', function(req,res){
+  db.insertProject(req.body, function(err, project){
+    if(err = 200){
+      console.log("allgud?");
+      res.status(200).send(project);
+    }else{
+      res.status(404).send("Something went wrong", err);
+    }
+  });
+});
 
 //GET ALL PROJECTS
 app.get('/api/projects', function(req,res) {
   db.getAllProject(function(err,projects){
-    if(err == 0){
+    if(err == 200){
       res.status(200).send(projects);
     }else{
       res.status(404).send("Something went wrong", err);
@@ -28,7 +38,7 @@ app.get('/api/projects', function(req,res) {
 //UPDATE PROJECT ACTIVE
 app.put('/api/projects/:projektId', function(req,res) {
   db.updateProject(req.params.projektId, function(err,project){
-    if(err == 0){
+    if(err == 200){
       res.status(200).send(project);
     }else{
       res.status(404).send("Something went wrong", err);
@@ -36,46 +46,10 @@ app.put('/api/projects/:projektId', function(req,res) {
   });
 });
 
-//CREATE A NEW PROJECT
-app.post('/api/projects', function(req,res){
-connection.query("INSERT INTO projekt (title, active, clientId) VALUES ('" + req.body.title + "'," + req.body.active + ",'" + req.body.client_id + "')", function(err, rows, fields) {
-
-  //Send back the body of the added Projekt is the database write was successfull.
-  if (!err) {
-    console.log('Insert into query successfull.');
-    connection.query("SELECT * FROM projekt WHERE clientId ='" + req.body.client_id+"'", function(err, results, fields){
-    if(!err){
-      console.log('Select the new project query successfull.', );
-
-      //Default active is false, check if Project is active and set "true".
-      var active = false;
-      if(results[0].active == 1){active = true};
-
-      var tempProject = {
-        "id" : results[0].id,
-        "client_id": results[0].clientId,
-        "title" : results[0].title,
-        "active" : active
-      };
-      res.status(200).send(tempProject);
-    }else{
-      console.log('ERROR while selecting the new Project.', err);
-      res.status(404).send("Ops, something went wrong! Now fuck off!");
-      }
-    });
-  }else {
-    //If the database write has failed send back an error.
-    console.log('ERROR while inserting a new Project.', err);
-    res.status(404).send("Ops, something went wrong! Now fuck off!");
-    }
-  });
-});
-
-
 //GET ISSUES FOR A PROJECT
 app.get('/api/projects/:projektId/issues', function(req,res) {
   db.getIssues(req.params.projektId, function(err,issues){
-    if(err == 0){
+    if(err == 200){
       res.status(200).send(issues);
     }
     else{
@@ -83,7 +57,6 @@ app.get('/api/projects/:projektId/issues', function(req,res) {
     }
   });
 });
-
 
 
 /*

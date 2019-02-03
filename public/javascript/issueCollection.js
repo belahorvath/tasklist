@@ -32,7 +32,6 @@ class IssueCollection {
     fetch(data){
       var main = this;
           $.ajax({
-            async: false,
             type: "GET",
             url: '/api/projects/'+ data +'/issues',
             dataType: 'json'

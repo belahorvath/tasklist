@@ -9,7 +9,7 @@ class ProjectCollection {
 
     save(){
       console.log(this);
-      localStorage.setItem("projectList", JSON.stringify(this.collection));
+      //localStorage.setItem("projectList", JSON.stringify(this.collection));
 
     }
 
@@ -26,7 +26,6 @@ class ProjectCollection {
     fetch(){
       var main = this;
       $.ajax({
-          async: false,
           type: "GET",
           url: '/api/projects',
           contentType: 'application/json',
@@ -41,5 +40,19 @@ class ProjectCollection {
       //this.collection = JSON.parse(localStorage.getItem("projectList")) || [];
     }
 
+    update(data){
+      var main = this;
+
+      $.ajax({
+        type: 'PUT',
+        url: '/api/projects/'+ data,
+        contentType: 'application/json',
+        dataType: 'json',
+        error : function(error){console.log(error); alert(error.responseText);},
+        success: function(data,status){
+          console.log("finished update");
+        }
+      });
+    }
 
 }

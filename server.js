@@ -5,20 +5,7 @@ const express = require('express'),
 var path = require('path')
 var morgan = require('morgan');
 var request = require('request');
-
-var mysql = require('mysql');
-
-var connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "testPasswort",
-  database: "tasklist",
-});
-
-connection.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-});
+var db = require('./database.js');
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
@@ -27,21 +14,21 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 
-//PROJECTS
+//GET ALL PROJECTS
 app.get('/api/projects', function(req,res) {
-
-  connection.query("SELECT * FROM projekt", function(err, results, fields){
-    if(!err){
-      console.log('Query successfull.');
-      res.status(200).send(results);
-    }else{
-      console.log('Error while performing the Query.', err);
-      res.status(404).send("Ops, something went wrong! Now fuck off!");
-    }
+  db.getAllProject(function(projects){
+    res.status(200).send(projects);
   });
 });
 
-//Projekt POST
+//UPDATE PROJECT ACTIVE
+app.put('/api/projects/:projektId', function(req,res) {
+  db.updateProject(req.params.projektId, function(project){
+    res.status(200).send(project);
+  });
+});
+
+//CREATE A NEW PROJECT
 app.post('/api/projects', function(req,res){
 connection.query("INSERT INTO projekt (title, active, clientId) VALUES ('" + req.body.title + "'," + req.body.active + ",'" + req.body.client_id + "')", function(err, rows, fields) {
 
@@ -80,16 +67,23 @@ connection.query("INSERT INTO projekt (title, active, clientId) VALUES ('" + req
 //GET ISSUES FOR A PROJECT
 app.get('/api/projects/:projektId/issues', function(req,res) {
   console.log(req.params.projektId)
+  db.getIssues(req.params.projektId, function(issues){
+    res.status(200).send(issues);
+  });
+  /*
   connection.query("SELECT * FROM issue WHERE projektID ='" + req.params.projektId + "'", function(err, results, fields){
     if(!err){
       console.log('Query successfull.');
-      res.status(200).send(results);
+
     }else{
       console.log('Error while performing the Query.', err);
       res.status(404).send("Ops, something went wrong! Now fuck off!");
     }
   });
+  */
 });
+
+
 
 /*
 //ISSUES
@@ -128,5 +122,6 @@ console.log(req.body);
 */
 
 app.listen(8080, function(){
+  db.open();
   console.log("ready captain.");
 });

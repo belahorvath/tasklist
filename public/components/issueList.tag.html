@@ -25,11 +25,13 @@
       this.projects = opts.projects;
       this.name = "Issues: ";
 
-      for(i=0 ; i<this.projects.collection.length;i++)
+      //Change the name of the issues to the name of the project
+      for(i=0; i<this.projects.collection.length;i++)
       {
           if(this.projects.collection[i].active)
           {
               this.name =  opts.projects.collection[i].title+" :";
+
           }
       }
 

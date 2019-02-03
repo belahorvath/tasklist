@@ -19,7 +19,7 @@
                       this.projects.collection[i].active = 1;
 
                       //Updates MySQL DB to activate project
-                      this.projects.update(this.projects.collection[i].clientId);
+                      this.projects.updateActive(this.projects.collection[i].clientId);
 
                       //When clicking a project which is "Active" load the new issue list.
                       this.issues.fetch(this.projects.collection[i].clientId);

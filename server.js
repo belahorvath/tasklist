@@ -16,15 +16,23 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //GET ALL PROJECTS
 app.get('/api/projects', function(req,res) {
-  db.getAllProject(function(projects){
-    res.status(200).send(projects);
+  db.getAllProject(function(err,projects){
+    if(err == 0){
+      res.status(200).send(projects);
+    }else{
+      res.status(404).send("Something went wrong", err);
+    }
   });
 });
 
 //UPDATE PROJECT ACTIVE
 app.put('/api/projects/:projektId', function(req,res) {
-  db.updateProject(req.params.projektId, function(project){
-    res.status(200).send(project);
+  db.updateProject(req.params.projektId, function(err,project){
+    if(err == 0){
+      res.status(200).send(project);
+    }else{
+      res.status(404).send("Something went wrong", err);
+    }
   });
 });
 
@@ -34,10 +42,10 @@ connection.query("INSERT INTO projekt (title, active, clientId) VALUES ('" + req
 
   //Send back the body of the added Projekt is the database write was successfull.
   if (!err) {
-    console.log('Query successfull.');
+    console.log('Insert into query successfull.');
     connection.query("SELECT * FROM projekt WHERE clientId ='" + req.body.client_id+"'", function(err, results, fields){
     if(!err){
-      console.log('Inner Query successfull.', );
+      console.log('Select the new project query successfull.', );
 
       //Default active is false, check if Project is active and set "true".
       var active = false;
@@ -51,13 +59,13 @@ connection.query("INSERT INTO projekt (title, active, clientId) VALUES ('" + req
       };
       res.status(200).send(tempProject);
     }else{
-      console.log('Error while performing the inner Query.', err);
+      console.log('ERROR while selecting the new Project.', err);
       res.status(404).send("Ops, something went wrong! Now fuck off!");
       }
     });
   }else {
     //If the database write has failed send back an error.
-    console.log('Error while performing the outer Query.', err);
+    console.log('ERROR while inserting a new Project.', err);
     res.status(404).send("Ops, something went wrong! Now fuck off!");
     }
   });
@@ -66,21 +74,14 @@ connection.query("INSERT INTO projekt (title, active, clientId) VALUES ('" + req
 
 //GET ISSUES FOR A PROJECT
 app.get('/api/projects/:projektId/issues', function(req,res) {
-  console.log(req.params.projektId)
-  db.getIssues(req.params.projektId, function(issues){
-    res.status(200).send(issues);
-  });
-  /*
-  connection.query("SELECT * FROM issue WHERE projektID ='" + req.params.projektId + "'", function(err, results, fields){
-    if(!err){
-      console.log('Query successfull.');
-
-    }else{
-      console.log('Error while performing the Query.', err);
-      res.status(404).send("Ops, something went wrong! Now fuck off!");
+  db.getIssues(req.params.projektId, function(err,issues){
+    if(err == 0){
+      res.status(200).send(issues);
+    }
+    else{
+      res.status(404).send("Operation failed!", err);
     }
   });
-  */
 });
 
 

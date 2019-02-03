@@ -15,15 +15,15 @@ function openDB(){
   });
 }
 
-function getAllProject(callback){
+function getAllProject(err,callback){
   connection.query("SELECT * FROM projekt", function(err, results) {
     if(!err){
       console.log('Query successfull.');
       //res.status(200).send(results);
-      callback(results);
+      callback(0, results);
     }else{
-      console.log('Error while performing the Query.', err);
-      res.status(404).send("Ops, something went wrong! Now fuck off!");
+      console.log('ERROR while.', err);
+      callback(1, err);
     }
   });
 }
@@ -32,10 +32,10 @@ function getIssuesOfProject(id, callback){
   connection.query("SELECT * FROM issue WHERE projektID ='" + id + "'", function(err, results){
     if(!err){
       console.log('Query successfull.');
-      callback(results);
+      callback(0,results);
     }else{
       console.log('Error while performing the Query.', err);
-      res.status(404).send("Ops, something went wrong! Now fuck off!");
+      callback(1, err);
     }
   });
 }
@@ -44,10 +44,10 @@ function updateProject(id, callback){
   connection.query("UPDATE projekt SET active = '1' WHERE clientId ='" + id +"'", function(err, results) {
     if(!err){
       console.log('Query successfull.');
-      callback(results);
+      callback(0, results);
     }else{
       console.log('Error while performing the Query.', err);
-      res.status(404).send("Ops, something went wrong! Now fuck off!");
+      callback(1, err);
     }
   });
 }

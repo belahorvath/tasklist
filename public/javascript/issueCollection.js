@@ -34,19 +34,16 @@ class IssueCollection {
           $.ajax({
             type: "GET",
             url: '/api/projects/'+ data +'/issues',
-            dataType: 'json'
-              }).done(function(data){
+            contentType: 'application/json',
+            dataType: 'json',
+            error : function(error){console.log(error); alert(error.responseText);},
+            success: function(data,status){
+                console.log(status, data);
                 main.collection = data;
-                /*
-                //Convert date back from ISO format to normal
-                for(i = 0;i<main.collection.length;i++){
-                  var date = new Date(main.collection[i].due_date);
-                  main.collection[i].due_date = date.toISOString().substring(0, 10);
-                }
-                */
                 main.riotjs_tag.update();
-              });
-    }
+            }
+    });
+  }
 
     update(){
         this.riotjs_tag.update();

@@ -40,7 +40,7 @@ class ProjectCollection {
       //this.collection = JSON.parse(localStorage.getItem("projectList")) || [];
     }
 
-    update(data){
+    updateActive(data){
       var main = this;
 
       $.ajax({

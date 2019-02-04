@@ -1,7 +1,8 @@
 <project>
-    <input   onclick="{ issue }" value="{ title }" ref="{ title }" id="projectInput" type="text" readonly>
-
-
+  <li class="list-group-item">
+    <input onclick="{ issue }" value="{ title }" ref="{ title }" id="projectInput" type="text" readonly>
+    <img  class="float-right" src="images/trash.png" onclick="{ delete_project }">
+  </li>
     <script>
 
       this.issues = opts.issues;
@@ -17,10 +18,10 @@
                   {
                       //Update active
                       this.projects.collection[i].active = 1;
-                      this.projects.updateActive(this.projects.collection[i].clientId, 1);
+                      this.projects.updateActive(this.clientId, 1);
 
                       //When clicking a project which is "Active" load the new issue list.
-                      this.issues.fetch(this.projects.collection[i].clientId);
+                      this.issues.fetch(this.clientId);
 
                   } else if(this.projects.collection[i].active == 1){
 
@@ -31,6 +32,17 @@
 
               }
               this.projects.save();
+          }
+
+          delete_project(e){
+            e.preventDefault();
+            for(i = 0;i<this.projects.collection.length;i++)
+            {
+                if(this.projects.collection[i].clientId == this.clientId)
+                {
+                  this.projects.removeProject(this.projects.collection[i]);
+                }
+            }
           }
     </script>
 

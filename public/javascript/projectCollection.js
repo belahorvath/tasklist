@@ -48,10 +48,25 @@ class ProjectCollection {
         url: '/api/projects/'+ data + "/" + active,
         contentType: 'application/json',
         dataType: 'json',
-        error : function(error){console.log(error); alert(error.responseText);},
+        error :  function(error){console.log(error); alert(error.responseText);},
         success: function(data,status){
           console.log("finished update");
         }
+      });
+    }
+
+    removeProject(data){
+      var main = this;
+
+      $.ajax({
+        type: 'DELETE',
+        url: '/api/projects/',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        error :  function(error){console.log(error); alert(error.responseText);},
+        success: function(data,status){
+          console.log("Porjekt: " + data + " got deleted!");
+          main.riotjs_tag.update();
       });
     }
 

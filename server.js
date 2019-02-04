@@ -15,9 +15,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //CREATE A NEW PROJECT
 app.post('/api/projects', function(req,res){
   db.insertProject(req.body, function(err, project){
-    if(err = 200){
-      console.log("allgud?");
+    if(err == 200){
       res.status(200).send(project);
+    }else{
+      res.status(404).send("Something went wrong", err);
+    }
+  });
+});
+
+//DELETE A PROJECTS
+app.delete('/api/projects', function(req, res){
+  var title = req.body.title;
+  db.removeProject(req.body.clientId, function(err, project){
+    if(err == 200){
+      res.status(200).send(title);
     }else{
       res.status(404).send("Something went wrong", err);
     }

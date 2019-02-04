@@ -19,6 +19,18 @@ function insertProject(project, callback){
   connection.query("INSERT INTO projekt (title, active, clientId) VALUES ('" + project.title + "'," + 1 + ",'" + project.client_id + "')", function(err, results){
     if(!err){
       console.log('Query successfull.');
+      callback(200, project);
+    }else{
+      console.log('Error while performing the Query.', err);
+      callback(404, err);
+    }
+  });
+}
+
+function removeProject(id, callback){
+  connection.query("DELETE FROM projekt WHERE clientId='" + id + "'", function(err, results){
+    if(!err){
+      console.log('Query successfull.');
       callback(200, results);
     }else{
       console.log('Error while performing the Query.', err);
@@ -26,6 +38,7 @@ function insertProject(project, callback){
     }
   });
 }
+
 function updateProject(id, active, callback){
   connection.query("UPDATE projekt SET active = '"+ active +"' WHERE clientId ='" + id +"'", function(err, results) {
     if(!err){
@@ -42,7 +55,6 @@ function getAllProject(callback){
   connection.query("SELECT * FROM projekt", function(err, results) {
     if(!err){
       console.log('Query successfull.');
-      //res.status(200).send(results);
       callback(200, results);
     }else{
       console.log('ERROR while.', err);
@@ -68,7 +80,7 @@ module.exports = {
     open: openDB,
     insertProject: insertProject,
     updateProject: updateProject,
-    //removeProject: removeProject,
+    removeProject: removeProject,
     //insertIssue: insertIssue,
     //updateIssue: updateIssue,
     //removeIssue: removeIssue,

@@ -3,10 +3,10 @@
   overflow: hidden;
   background-color: #f1f1f1;
   padding: 20px 10px;
-position: fixed;
-    top: 0;
+  position: fixed;
+  top: 0;
   width: 100%;
-    z-index: 3;
+  z-index: 3;
 }
 
 /* Style the header links */
@@ -95,20 +95,23 @@ legend {
   overflow: scroll;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
+
 }
 
 .list-group li {
   height: 35px;
   font-size: 12px;
   padding: 8px;
+}
 
-
+#projectInput{
+  border: none;
+  width: 280px;
 }
 
 #projectInput:focus{
   background-color: dodgerblue;
   color: white;
-
 }
 
 #li-rigthbound {
@@ -131,7 +134,7 @@ legend {
 }
 
 #txtProject {
-  width: 50%;
+    width: 50%;
     min-width: 100px;
 }
 

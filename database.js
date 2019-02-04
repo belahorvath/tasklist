@@ -15,6 +15,29 @@ function openDB(){
   });
 }
 
+function insertProject(project, callback){
+  connection.query("INSERT INTO projekt (title, active, clientId) VALUES ('" + project.title + "'," + 1 + ",'" + project.client_id + "')", function(err, results){
+    if(!err){
+      console.log('Query successfull.');
+      callback(200, results);
+    }else{
+      console.log('Error while performing the Query.', err);
+      callback(404, err);
+    }
+  });
+}
+function updateProject(id, active, callback){
+  connection.query("UPDATE projekt SET active = '"+ active +"' WHERE clientId ='" + id +"'", function(err, results) {
+    if(!err){
+      console.log('Query successfull.');
+      callback(200, results);
+    }else{
+      console.log('Error while performing the Query.', err);
+      callback(404, err);
+    }
+  });
+}
+
 function getAllProject(callback){
   connection.query("SELECT * FROM projekt", function(err, results) {
     if(!err){
@@ -33,30 +56,6 @@ function getIssuesOfProject(id, callback){
     if(!err){
       console.log('Query successfull.');
       callback(200,results);
-    }else{
-      console.log('Error while performing the Query.', err);
-      callback(404, err);
-    }
-  });
-}
-
-function updateProject(id, callback){
-  connection.query("UPDATE projekt SET active = '1' WHERE clientId ='" + id +"'", function(err, results) {
-    if(!err){
-      console.log('Query successfull.');
-      callback(200, results);
-    }else{
-      console.log('Error while performing the Query.', err);
-      callback(404, err);
-    }
-  });
-}
-
-function insertProject(project, callback){
-  connection.query("INSERT INTO projekt (title, active, clientId) VALUES ('" + project.title + "'," + 1 + ",'" + project.client_id + "')", function(err, results){
-    if(!err){
-      console.log('Query successfull.');
-      callback(200, results);
     }else{
       console.log('Error while performing the Query.', err);
       callback(404, err);

@@ -40,12 +40,12 @@ class ProjectCollection {
       //this.collection = JSON.parse(localStorage.getItem("projectList")) || [];
     }
 
-    updateActive(data){
+    updateActive(data, active){
       var main = this;
 
       $.ajax({
         type: 'PUT',
-        url: '/api/projects/'+ data,
+        url: '/api/projects/'+ data + "/" + active,
         contentType: 'application/json',
         dataType: 'json',
         error : function(error){console.log(error); alert(error.responseText);},

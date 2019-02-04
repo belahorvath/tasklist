@@ -31,7 +31,6 @@
         this.projects = new ProjectCollection(this);
         this.issues = new IssueCollection(this);
         this.projects.fetch();
-        //MUSS ASYNCHRONISIERT WERDEN!!
         this.projects.save();
 
         //Check which project is currently active and load issues on page refresh!

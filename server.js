@@ -24,6 +24,7 @@ app.post('/api/projects', function(req,res){
   });
 });
 
+
 //GET ALL PROJECTS
 app.get('/api/projects', function(req,res) {
   db.getAllProject(function(err,projects){
@@ -36,8 +37,8 @@ app.get('/api/projects', function(req,res) {
 });
 
 //UPDATE PROJECT ACTIVE
-app.put('/api/projects/:projektId', function(req,res) {
-  db.updateProject(req.params.projektId, function(err,project){
+app.put('/api/projects/:projektId/:active', function(req,res) {
+  db.updateProject(req.params.projektId,req.params.active, function(err,project){
     if(err == 200){
       res.status(200).send(project);
     }else{

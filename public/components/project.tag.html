@@ -40,8 +40,18 @@
             {
                 if(this.projects.collection[i].clientId == this.clientId)
                 {
-                  this.projects.removeProject(this.projects.collection[i]);
+                  var tempProject = this.projects.collection[i];
+                  var main = this;
+                  this.projects.removeProjectInDB(tempProject, function(err,data){
+                    if(err == 200){
+                      main.projects.remove(tempProject);
+                    }else{
+                       alert(err.responseText);
+                    }
+                  });
+
                 }
+
             }
           }
     </script>

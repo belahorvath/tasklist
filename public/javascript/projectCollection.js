@@ -23,6 +23,11 @@ class ProjectCollection {
         this.riotjs_tag.update();
     }
 
+    remove(model){
+      var index = this.collection.indexOf(model);
+      this.collection.splice(index, 1);
+    }
+
     fetch(){
       var main = this;
       $.ajax({
@@ -55,7 +60,7 @@ class ProjectCollection {
       });
     }
 
-    removeProject(data){
+    removeProjectInDB(data, callback){
       var main = this;
 
       $.ajax({
@@ -63,10 +68,12 @@ class ProjectCollection {
         url: '/api/projects/',
         data: JSON.stringify(data),
         contentType: 'application/json',
-        error :  function(error){console.log(error); alert(error.responseText);},
+        error :  function(error){console.log(error); callback(404, err);},
         success: function(data,status){
           console.log("Porjekt: " + data + " got deleted!");
+          callback(200);
           main.riotjs_tag.update();
+        }
       });
     }
 

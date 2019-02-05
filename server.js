@@ -70,43 +70,6 @@ app.get('/api/projects/:projektId/issues', function(req,res) {
   });
 });
 
-
-/*
-//ISSUES
-app.post('/api/projects/project_id/issues', function(req,res) {
-
-var newurl = 'http://zhaw-issue-tracker-api.herokuapp.com/api/projects/'+ req.body.project_id +'/issues';
-var headers = {
-  "Content-Type" : 'application/json'
-}
-console.log(req.body);
-  request.post({headers: headers, url: newurl, json : req.body}, function (error, response, body) {
-/*
-    if(response.statusCode != 200){
-      console.log('error:', error);
-      console.log('statusCode:', response && response.statusCode);
-    }
-    console.log('error:', error);
-    console.log('statusCode:', response && response.statusCode);
-    console.log('body', body);
-    //res.send(body);
-  });
-
-  /* TEMPLATE GET with QUERY 13000
-                $.ajax({
-                    type: "GET",
-                    url: '/api/projects',
-                    data: {"id" : 13000},
-                    dataType: 'json'
-                  }).done(function(data){
-                  console.log(data);
-                  //this.projects.add(data);
-                });
-
-});
-
-*/
-
 app.listen(8080, function(){
   db.open();
   console.log("ready captain.");

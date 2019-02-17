@@ -86,9 +86,9 @@ class ProjectCollection {
         url: '/api/projects/',
         data: JSON.stringify(data),
         contentType: 'application/json',
-        error :  function(error){console.log(error); callback(404, err);},
+        error :  function(error){console.log(error); callback(404, error);},
         success: function(data,status){
-          console.log("Porjekt: " + data + " got deleted!");
+          console.log("Projekt: " + data + " got deleted!");
           callback(200);
           main.riotjs_tag.update();
         }

@@ -96,7 +96,18 @@ function getIssuesOfProject(id, callback){
   });
 }
 
-
+function removeIssue(projectId, issueId, callback){
+  console.log(projectId,issueId)
+  connection.query("DELETE FROM issue WHERE projektId ='" + projectId + "' AND id ='" + issueId + "'", function(err, results){
+    if(!err){
+      console.log('Query successfull.');
+      callback(200, results);
+    }else{
+      console.log('Error while performing the Query.', err);
+      callback(404, err);
+    }
+  });
+}
 
 //<------------------------------------------------------------------------ UUID AND EXPORTS --------------------------------------------------------------------------->
 
@@ -116,7 +127,7 @@ module.exports = {
     removeProject: removeProject,
     insertIssue: insertIssue,
     //updateIssue: updateIssue,
-    //removeIssue: removeIssue,
+    removeIssue: removeIssue,
     getAllProject: getAllProject,
     getIssues: getIssuesOfProject
 }

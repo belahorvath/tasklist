@@ -19,25 +19,20 @@
 
 delete_issue(e){
 
-    for(var i = 0; i<this.issues.collection.length;i++)
-    {
-        if(this.client_id == this.issues.collection[i].client_id && this.project_id == this.issues.collection[i].project_id )
-    {
+    for(var i = 0; i<this.issues.collection.length;i++){
+        if(this.id == this.issues.collection[i].id && this.project_id == this.issues.collection[i].project_id ){
+          var tempIssues = this.issues.collection[i];
+          var main = this;
 
-        $.ajax({
-            type: "DELETE",
-            url: 'http://zhaw-issue-tracker-api.herokuapp.com/api/projects/'+ this.issues.collection[i].project_id +'/issues/'+ this.issues.collection[i].id,
-            data: JSON.stringify(this.issues.collection[i]),
-            contentType: 'application/json',
-            dataType: 'json',
-            error : function(error){console.log(error);},
-            success: function(data,status){
-                console.log("Successfully deleted Issue");
+          this.issues.removeIssueInDB(tempIssues, function(err, data){
+            if(err == 200){
+              main.issues.remove(tempIssues);
+              alert("Issue: " + data + " got removed!");
+            }else{
+              alert(data.responseText);
             }
           });
-
-    }
-        this.issues.update();
+        }
 }
 
 

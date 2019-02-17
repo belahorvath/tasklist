@@ -17,6 +17,11 @@ class IssueCollection {
         this.riotjs_tag.update();
     }
 
+    remove(model){
+      var index = this.collection.indexOf(model);
+      this.collection.splice(index, 1);
+    }
+
     fetch(data){
       var main = this;
           $.ajax({
@@ -55,6 +60,29 @@ class IssueCollection {
             callback(200, tempIssue);
         }
       });
+  }
+
+  removeIssueInDB(tempIssue,callback){
+    var main = this;
+    var project_Id = tempIssue.projektId;
+    var issue_Id = tempIssue.id;
+
+    $.ajax({
+        type: "DELETE",
+        url: '/api/projects/'+ project_Id +'/issue/'+ issue_Id,
+        data: JSON.stringify(tempIssue),
+        contentType: 'application/json',
+        error : function(error){console.log(error);callback(404,error);},
+        success: function(data,status){
+          console.log("Issue: " + data + " got deleted!");
+          callback(200,data);
+          main.riotjs_tag.update();
+        }
+      });
+  }
+
+  updateDone(){
+
   }
 
     update(){

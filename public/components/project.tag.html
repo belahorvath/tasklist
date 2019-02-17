@@ -1,6 +1,6 @@
 <project>
   <li class="list-group-item">
-    <input onclick="{ issue }" value="{ title }" ref="{ title }" id="projectInput" type="text" readonly>
+    <input onclick="{ loadIssuesForProject }" value="{ title }" ref="{ title }" id="projectInput" type="text" readonly>
     <img  class="float-right" src="images/trash.png" onclick="{ delete_project }">
   </li>
     <script>
@@ -8,7 +8,7 @@
       this.issues = opts.issues;
       this.projects = opts.projects;
 
-          issue(e){
+          loadIssuesForProject(e){
             e.preventDefault();
 
 
@@ -46,14 +46,11 @@
                     if(err == 200){
                       main.projects.remove(tempProject);
                     }else{
-                       alert(err.responseText);
+                       alert(data.responseText);
                     }
                   });
-
                 }
-
             }
           }
     </script>
-
 </project>

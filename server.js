@@ -28,11 +28,11 @@ app.post('/api/projects', function(req,res){
 //DELETE A PROJECTS
 app.delete('/api/projects', function(req, res){
   var title = req.body.title;
-  db.removeProject(req.body.clientId, function(err, project){
+  db.removeProject(req.body.clientId, function(err, data){
     if(err == 200){
       res.status(200).send(title);
     }else{
-      res.status(404).send("Something went wrong", project);
+      res.status(404).send("Something went wrong", data);
     }
   });
 });
@@ -70,6 +70,18 @@ app.post('/api/issues/', function(req,res){
     }
     else{
       res.status(404).send("Operation failed!", issue);
+    }
+  });
+});
+
+//DELETE ISSUE FOR A PROJECT
+app.delete('/api/projects/:projectId/issue/:issueId' , function(req, res){
+  var title = req.body.title;
+  db.removeIssue(req.params.projectId, req.params.issueId, function(err, data){
+    if(err == 200){
+      res.status(200).send(title);
+    }else{
+      res.status(404).send("Something went wrong", data);
     }
   });
 });

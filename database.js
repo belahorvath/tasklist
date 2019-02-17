@@ -16,7 +16,7 @@ function openDB(){
 }
 
 function insertProject(project, callback){
-  connection.query("INSERT INTO projekt (title, active, clientId) VALUES ('" + project.title + "'," + 1 + ",'" + project.client_id + "')", function(err, results){
+  connection.query("INSERT INTO projekt (title, active, clientId) VALUES ('" + project.title + "'," + 0 + ",'" + uuidv4() + "')", function(err, results){
     if(!err){
       console.log('Query successfull.');
       callback(200, project);
@@ -64,6 +64,7 @@ function getAllProject(callback){
 }
 
 function getIssuesOfProject(id, callback){
+  console.log(id);
   connection.query("SELECT * FROM issue WHERE projektID ='" + id + "'", function(err, results){
     if(!err){
       console.log('Query successfull.');
@@ -73,6 +74,15 @@ function getIssuesOfProject(id, callback){
       callback(404, err);
     }
   });
+}
+
+
+// generate uuidv4
+function uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
 }
 
 module.exports = {

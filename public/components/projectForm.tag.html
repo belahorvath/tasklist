@@ -21,36 +21,27 @@
           }
           if(alreadyExists == false){
 
+            //Create temporary JSON Object for Project
             var tempProject = {
               "id" : this.projects.collection.length,
-              "client_id": uuidv4(),
+              "client_id": "",
               "title" : this.refs.projectName.value,
               "active" : false};
 
-            $.ajax({
-                type: "POST",
-                url: '/api/projects',
-                data: JSON.stringify(tempProject),
-                contentType: 'application/json',
-                dataType: 'json',
-                error : function(error){console.log(error); alert(error.responseText);},
-                success: function(data,status){
-                    console.log(status);
-                    main.projects.add(data);
-                }
-              });
+            //Create the Project in the DB
+            main.projects.createProject(tempProject, function(err, data){
+              if(err == 200){
+                main.projects.add(data);
+              }else{
+                alert(err.responseText);
+              }
+            });
 
+            //Reset Placeholdervalue
             main.refs.projectName.value="";
           }
         }
       }
 
-      // generate uuidv4
-      function uuidv4() {
-          return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-              var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-              return v.toString(16);
-          });
-}
 </script>
 </projectForm>

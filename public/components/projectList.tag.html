@@ -29,20 +29,31 @@
 
         this.projects = new ProjectCollection(this);
         this.issues = new IssueCollection(this);
-        this.projects.fetch();
-        this.projects.save();
 
-        //Check which project is currently active and load issues on page refresh!
-        var id = 0;
-        for(i = 0;i<this.projects.collection.length;i++)
-        {
-          if(this.projects.collection[i].active == 1)
-          {
-            id = this.projects.collection[i].id;
+        //Fetch all the Projects, check which one is active and load its issues!
+        this.projects.fetch(function(err, data){
+
+          //Reference from CallbackSuccess to the current ProjectList
+          var main = data;
+
+          if(err == 200){
+
+            var id = 0;
+            for(i = 0;i<main.collection.length;i++)
+            {
+              if(main.collection[i].active == 1)
+              {
+                id = main.collection[i].clientId;
+                main.save();
+              }
+            }
+          }else{
+            alert(err.responseText);
           }
-        }
+        });
 
-        //$.ajax get request for project id
+
+        //Fetch Issues for the Current active Project
         //this.issues.fetch(id);
 
         this.allProjects = function() {

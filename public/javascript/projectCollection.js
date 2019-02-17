@@ -28,21 +28,39 @@ class ProjectCollection {
       this.collection.splice(index, 1);
     }
 
-    fetch(){
+    fetch(callback){
       var main = this;
       $.ajax({
           type: "GET",
           url: '/api/projects',
           contentType: 'application/json',
           dataType: 'json',
-          error : function(error){console.log(error); alert(error.responseText);},
+          error : function(error){console.log(error); callback(404, err)},
           success: function(data,status){
               console.log(status, data);
               main.collection = data;
               main.riotjs_tag.update();
+              callback(200, main);
           }
         });
       //this.collection = JSON.parse(localStorage.getItem("projectList")) || [];
+    }
+
+    createProject(tempProject, callback){
+      var main = this;
+
+      $.ajax({
+          type: "POST",
+          url: '/api/projects',
+          data: JSON.stringify(tempProject),
+          contentType: 'application/json',
+          dataType: 'json',
+          error : function(error){console.log(error); callback(404, err);},
+          success: function(data,status){
+              console.log(status);
+              callback(200, tempProject);
+          }
+        });
     }
 
     updateActive(data, active){

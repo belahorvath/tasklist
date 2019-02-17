@@ -15,6 +15,10 @@ function openDB(){
   });
 }
 
+
+
+//<------------------------------------------------------------------------ PROJECTS --------------------------------------------------------------------------->
+
 function insertProject(project, callback){
   connection.query("INSERT INTO projekt (title, active, clientId) VALUES ('" + project.title + "'," + 0 + ",'" + uuidv4() + "')", function(err, results){
     if(!err){
@@ -63,8 +67,25 @@ function getAllProject(callback){
   });
 }
 
+
+
+//<------------------------------------------------------------------------ ISSUES --------------------------------------------------------------------------->
+
+function insertIssue(issue, callback){
+  console.log(issue);
+  connection.query("INSERT INTO issue (projektId, clientId, done, title, due_date, created_at, updated_at, priority) VALUES ('"+ issue.project_id + "','"
+  + uuidv4() + "','" + issue.done + "','" + issue.title + "','" + issue.due_date + "','" + issue.created_at + "','" + issue.updated_at + "','" + issue.priority + "')" , function(err, results){
+    if(!err){
+      console.log('Query successfull.');
+      callback(200, issue);
+    }else{
+      console.log('Error while performing the Query.', err);
+      callback(404, err);
+    }
+  });
+}
+
 function getIssuesOfProject(id, callback){
-  console.log(id);
   connection.query("SELECT * FROM issue WHERE projektID ='" + id + "'", function(err, results){
     if(!err){
       console.log('Query successfull.');
@@ -76,6 +97,9 @@ function getIssuesOfProject(id, callback){
   });
 }
 
+
+
+//<------------------------------------------------------------------------ UUID AND EXPORTS --------------------------------------------------------------------------->
 
 // generate uuidv4
 function uuidv4() {
@@ -91,7 +115,7 @@ module.exports = {
     insertProject: insertProject,
     updateProject: updateProject,
     removeProject: removeProject,
-    //insertIssue: insertIssue,
+    insertIssue: insertIssue,
     //updateIssue: updateIssue,
     //removeIssue: removeIssue,
     getAllProject: getAllProject,

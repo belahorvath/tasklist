@@ -45,6 +45,23 @@ class IssueCollection {
     });
   }
 
+  createIssue(tempIssue, callback){
+    var main = this;
+
+    $.ajax({
+        type: "POST",
+        url: '/api/issues/',
+        data: JSON.stringify(tempIssue),
+        contentType: 'application/json',
+        dataType: 'json',
+        error : function(error){console.log(error); callback(404, error);},
+        success: function(data,status){
+            console.log(status);
+            callback(200, tempIssue);
+        }
+      });
+  }
+
     update(){
         this.riotjs_tag.update();
     }

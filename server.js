@@ -1,3 +1,5 @@
+//<------------------------------------------------------------------------ SERVER INIT ------------------------------------------------------------------------->
+
 const express = require('express'),
       bodyParser = require('body-parser'),
       app = express(),
@@ -11,14 +13,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-
+//<------------------------------------------------------------------------ PROJECTS --------------------------------------------------------------------------->
 //CREATE A NEW PROJECT
 app.post('/api/projects', function(req,res){
   db.insertProject(req.body, function(err, project){
     if(err == 200){
       res.status(200).send(project);
     }else{
-      res.status(404).send("Something went wrong", err);
+      res.status(404).send("Something went wrong", project);
     }
   });
 });
@@ -30,11 +32,10 @@ app.delete('/api/projects', function(req, res){
     if(err == 200){
       res.status(200).send(title);
     }else{
-      res.status(404).send("Something went wrong", err);
+      res.status(404).send("Something went wrong", project);
     }
   });
 });
-
 
 //GET ALL PROJECTS
 app.get('/api/projects', function(req,res) {
@@ -42,7 +43,7 @@ app.get('/api/projects', function(req,res) {
     if(err == 200){
       res.status(200).send(projects);
     }else{
-      res.status(404).send("Something went wrong", err);
+      res.status(404).send("Something went wrong", projects);
     }
   });
 });
@@ -53,9 +54,24 @@ app.put('/api/projects/:projektId/:active', function(req,res) {
     if(err == 200){
       res.status(200).send(project);
     }else{
-      res.status(404).send("Something went wrong", err);
+      res.status(404).send("Something went wrong", project);
     }
   });
+});
+
+
+//<------------------------------------------------------------------------ ISSUES --------------------------------------------------------------------------->
+
+//CREATE A NEW ISSUE FOR A PROJECTS
+app.post('/api/issues/', function(req,res){
+  db.insertIssue(req.body),function(err, issue){
+    if(err == 200){
+      res.status(200).send(issue);
+    }
+    else{
+      res.status(404).send("Operation failed!", issue);
+    }
+  }
 });
 
 //GET ISSUES FOR A PROJECT
@@ -65,10 +81,14 @@ app.get('/api/projects/:projektId/issues', function(req,res) {
       res.status(200).send(issues);
     }
     else{
-      res.status(404).send("Operation failed!", err);
+      res.status(404).send("Operation failed!", issues);
     }
   });
 });
+
+
+
+//<------------------------------------------------------------------------ START --------------------------------------------------------------------------->
 
 app.listen(8080, function(){
   db.open();

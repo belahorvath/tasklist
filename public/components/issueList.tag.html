@@ -35,17 +35,6 @@
           }
       }
 
-      this.allIssues = function() {
-        for(i=0 ; i<this.projects.collection.length;i++)
-        {
-            if(this.projects.collection[i].active)
-            {
-                this.id =  opts.projects.collection[i].id;
-            }
-        }
-        return  this.issues.allIndex(this.id);
-      }
-
       this.on('update',function () {
           for(i=0 ; i<this.projects.collection.length;i++)
                   {
@@ -55,6 +44,11 @@
                       }
                 }
               });
+
+      this.allIssues = function() {
+          return this.issues.all();
+        }
+
 </script>
 
 </issueList>

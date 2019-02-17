@@ -3,7 +3,7 @@
   <form onsubmit={ submit }>
     <div class="row">
       <div class="col-md-2 mb-2">
-        <select ref="issue_prio" class="form-control">
+        <select ref="issue_prio" class="form-control" required>
           <option value="1">Priority</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -11,10 +11,10 @@
         </select>
       </div>
       <div class="col-md-3 mb-2">
-        <input ref="issue_date" type="date" id="datepicker" placeholder="Pick date...">
+        <input ref="issue_date" type="date" id="datepicker" placeholder="Pick date..." required>
       </div>
       <div class="col-md-4 mb-2">
-        <input ref="issue_name" class="form-control" type="text" name="create_issue" placeholder="new Issue...">
+        <input ref="issue_name" class="form-control" type="text" name="create_issue" placeholder="new Issue..." required>
       </div>
       <div class="col-md-3 mb-2">
         <button type="submit" class="btn btn-primary">Create Issue</button>
@@ -51,14 +51,12 @@ for (i = 0; i < this.projects.collection.length; i++) {
 	var issue_prio = this.refs.issue_prio.value;
 
 
-
-
-var getDate = function(){
-  var time = new Date().getTime();
-  var date = new Date(time);
-  var string = date.toISOString().split('T')[0]
-  return string;
-}
+  var getDate = function(){
+    var time = new Date().getTime();
+    var date = new Date(time);
+    var string = date.toISOString().split('T')[0]
+    return string;
+  }
 
 
 	tempIssue = {

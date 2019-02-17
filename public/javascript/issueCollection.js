@@ -11,18 +11,6 @@ class IssueCollection {
         return this.collection;
     }
 
-    allIndex(index){
-        var col = [];
-    for(var i = 0; i<this.collection.length;i++){
-
-        if(this.collection[i].project_id == index)
-        {
-            col.push(this.collection[i]);
-        }
-
-    }
-        return col;
-    }
 
     add(model) {
         this.collection.push(model);
@@ -39,6 +27,13 @@ class IssueCollection {
             error : function(error){console.log(error); alert(error.responseText);},
             success: function(data,status){
                 console.log(status, data);
+
+                //Remove Strange Date format!
+                for(var i = 0;i<data.length;i++){
+                  var date = data[i].due_date.split('T')[0];
+                  data[i].due_date = date;
+                }
+
                 main.collection = data;
                 main.riotjs_tag.update();
             }

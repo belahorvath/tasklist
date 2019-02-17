@@ -64,14 +64,14 @@ app.put('/api/projects/:projektId/:active', function(req,res) {
 
 //CREATE A NEW ISSUE FOR A PROJECTS
 app.post('/api/issues/', function(req,res){
-  db.insertIssue(req.body),function(err, issue){
+  db.insertIssue(req.body, function(err, issue){
     if(err == 200){
       res.status(200).send(issue);
     }
     else{
       res.status(404).send("Operation failed!", issue);
     }
-  }
+  });
 });
 
 //GET ISSUES FOR A PROJECT

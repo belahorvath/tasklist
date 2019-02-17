@@ -72,7 +72,6 @@ function getAllProject(callback){
 //<------------------------------------------------------------------------ ISSUES --------------------------------------------------------------------------->
 
 function insertIssue(issue, callback){
-  console.log(issue);
   connection.query("INSERT INTO issue (projektId, clientId, done, title, due_date, created_at, updated_at, priority) VALUES ('"+ issue.project_id + "','"
   + uuidv4() + "','" + issue.done + "','" + issue.title + "','" + issue.due_date + "','" + issue.created_at + "','" + issue.updated_at + "','" + issue.priority + "')" , function(err, results){
     if(!err){
